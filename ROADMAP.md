@@ -1,4 +1,4 @@
-# KUNAL Portfolio — Upgrade Roadmap (Claude Code)
+# VEDPRAKASH Portfolio — Upgrade Roadmap (Claude Code)
 
 Use this file as the source of truth. Work **one phase at a time**. Do not skip ahead. Do not rebuild the site. Do not add a second backend (no Express, Firebase, WordPress, custom Node API).
 
@@ -20,7 +20,7 @@ Use this file as the source of truth. Work **one phase at a time**. Do not skip 
 Paste this at the start of a new Claude Code session:
 
 ```text
-You are upgrading the KUNAL portfolio. Read ROADMAP.md fully before editing.
+You are upgrading the VEDPRAKASH portfolio. Read ROADMAP.md fully before editing.
 Rules:
 - Keep the existing red/black/white design. Do not restyle from scratch.
 - Keep TanStack Start + Vercel. No Express / Firebase / WordPress.
@@ -41,8 +41,8 @@ Rules:
 | Deploy target | Vercel (`vite.config.ts` nitro preset) |
 | Pages | `/` `/about` `/services` `/projects` `/projects/$slug` `/tools` `/testimonials` `/contact` |
 | Content | Hardcoded in `src/data/content.ts` |
-| Contact | Client-only `localStorage` (`kunal-inquiries`) via `src/lib/storage.ts` + `src/components/contact-form.tsx` |
-| Theme | Light/dark, stored in `localStorage` (`kunal-theme`) |
+| Contact | Client-only `localStorage` (`vedprakash-inquiries`) via `src/lib/storage.ts` + `src/components/contact-form.tsx` |
+| Theme | Light/dark, stored in `localStorage` (`vedprakash-theme`) |
 | Auth / DB | Wired in `src/lib` but **unused**. Keep unused. Do not import `authMiddleware` unless Phase 6. |
 | Look | Strong desktop hero, service cards, project case studies, testimonial carousel |
 
@@ -135,14 +135,14 @@ DATABASE_URL            (Phase 5 only)
 ### Commit
 
 ```text
-chore: inventory current kunal portfolio before upgrades
+chore: inventory current vedprakash portfolio before upgrades
 ```
 
 ---
 
 ## Phase 1 — Real contact (Resend)  ★ highest leverage
 
-**Goal:** Submitting “Save brief” emails Kunal and still keeps a local draft.
+**Goal:** Submitting “Save brief” emails Vedprakash and still keeps a local draft.
 
 ### Product
 
@@ -150,7 +150,7 @@ chore: inventory current kunal portfolio before upgrades
 - On submit:
   1. Validate on the client (existing checks).
   2. Call a **server function** `submitInquiry`.
-  3. Server sends email via Resend to `CONTACT_TO_EMAIL` (default `hello@kunal.build`).
+  3. Server sends email via Resend to `CONTACT_TO_EMAIL` (default `hello@vedprakash.build`).
   4. Reply-To = the visitor’s email.
   5. On success: keep saving to `localStorage` as a personal copy + toast “Brief sent.”
   6. On failure: toast the error, still save local draft so nothing is lost.
@@ -171,14 +171,14 @@ chore: inventory current kunal portfolio before upgrades
 
 ```text
 RESEND_API_KEY=re_...
-CONTACT_TO_EMAIL=hello@kunal.build
+CONTACT_TO_EMAIL=hello@vedprakash.build
 ```
 
 ### Email template (plain + simple HTML)
 
 ```text
 Subject: New brief — {service} — {name}
-From: KUNAL site <noreply@your-verified-domain>
+From: VEDPRAKASH site <noreply@your-verified-domain>
 Reply-To: {email}
 
 Name / Email / Service / Budget / Message / submittedAt
@@ -212,7 +212,7 @@ feat: send contact briefs through Resend
 
 ### Implement
 
-1. Add `calcomUrl` to `src/data/content.ts` (placeholder `https://cal.com/kunal` until the real username exists).
+1. Add `calcomUrl` to `src/data/content.ts` (placeholder `https://cal.com/vedprakash` until the real username exists).
 2. `src/components/book-call-button.tsx` — reused on contact + CTA.
 3. Optional: `@calcom/embed-react` only if the embed does not tank LCP. If it does, link out.
 4. Footer already has socials — leave them.
@@ -284,8 +284,8 @@ In `src/styles.css` (tokens already exist):
 ### 4C — SEO / share
 
 - Unique `<title>` + meta description per route (`__root` default, override in each `createFileRoute` `head`)
-  - Home: `KUNAL — Ideas to Intelligent Solutions`
-  - Project: `{project.title} — KUNAL`
+  - Home: `VEDPRAKASH — Ideas to Intelligent Solutions`
+  - Project: `{project.title} — VEDPRAKASH`
 - Keep `public/og.jpg` and `src/lib/og/site.json` as-is
 - Add `public/robots.txt` allowing `/` (never `Disallow: /`)
 - Add `public/sitemap.xml` with the 8 public routes
@@ -351,13 +351,13 @@ feat: persist inquiries to neon
 
 ## Phase 6 — Private inbox (auth ON, optional)
 
-**Only if Kunal wants to read briefs on the site.** This is the first time auth is allowed.
+**Only if Vedprakash wants to read briefs on the site.** This is the first time auth is allowed.
 
 ### Product
 
 - `/inbox` — list inquiries. No public link in the nav.
 - Gated with existing Better Auth (`src/lib/auth`).
-- Only `context.userId` that matches an allow-list email (`INBOX_ALLOW_EMAIL=hello@kunal.build`) can read.
+- Only `context.userId` that matches an allow-list email (`INBOX_ALLOW_EMAIL=hello@vedprakash.build`) can read.
 - No public registration.
 
 ### Acceptance
@@ -402,11 +402,11 @@ feat: add conversion analytics
 
 ---
 
-## Phase 8 — Content that matches a real studio (needs Kunal)
+## Phase 8 — Content that matches a real studio (needs Vedprakash)
 
 Claude Code must **not** invent fake case studies as if they shipped. Replace placeholders only with copy the user provides.
 
-Collect from Kunal:
+Collect from Vedprakash:
 
 - [ ] Real name / photo (or keep current generated hero)
 - [ ] Real email + Cal.com username
@@ -427,7 +427,7 @@ content: replace placeholder copy and project images
 
 ## Phase 9 — Launch checklist
 
-- [ ] Custom domain on Vercel (e.g. `kunal.build`)
+- [ ] Custom domain on Vercel (e.g. `vedprakash.build`)
 - [ ] Resend domain verified (SPF + DKIM) — else mail lands in spam
 - [ ] Cal.com event type: 20-min intro, timezone Asia/Kolkata + auto-detect
 - [ ] Favicon + OG card (`public/favicon.svg`, `public/og.jpg`) still valid
@@ -456,11 +456,11 @@ If only one sitting: **Phase 1 + Phase 2**. That is what makes the site feel pow
 ```bash
 # Phase 1
 RESEND_API_KEY=
-CONTACT_TO_EMAIL=hello@kunal.build
+CONTACT_TO_EMAIL=hello@vedprakash.build
 
 # Phase 2
 # public URL only — put the real value in src/data/content.ts or:
-VITE_CALCOM_URL=https://cal.com/kunal
+VITE_CALCOM_URL=https://cal.com/vedprakash
 
 # Phase 3
 VITE_TURNSTILE_SITE_KEY=
@@ -470,7 +470,7 @@ TURNSTILE_SECRET_KEY=
 DATABASE_URL=
 
 # Phase 6
-INBOX_ALLOW_EMAIL=hello@kunal.build
+INBOX_ALLOW_EMAIL=hello@vedprakash.build
 
 # Phase 7
 VITE_POSTHOG_KEY=

@@ -8,8 +8,8 @@ export type Inquiry = {
   createdAt: string;
 };
 
-const KEY = "kunal-inquiries";
-const THEME_KEY = "kunal-theme";
+const KEY = "vedprakash-inquiries";
+const THEME_KEY = "vedprakash-theme";
 
 function canUseStorage() {
   return typeof window !== "undefined" && typeof window.localStorage !== "undefined";
@@ -48,7 +48,7 @@ export function downloadInquiries(list: Inquiry[]) {
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
-  a.download = "kunal-inquiries.json";
+  a.download = "vedprakash-inquiries.json";
   a.click();
   URL.revokeObjectURL(url);
 }

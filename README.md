@@ -27,4 +27,4 @@ npm run dev
 
 Opens at `http://localhost:8080`.
 
-Site copy lives in `src/data/content.ts`. Contact briefs are stored in the browser (`localStorage` key `kunal-inquiries`).
+Site copy lives in `src/data/content.ts`. Contact briefs are stored in the browser (`localStorage` key `vedprakash-inquiries`).
