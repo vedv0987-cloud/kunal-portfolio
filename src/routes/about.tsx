@@ -1,8 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
-import { Icon } from "@/components/icons";
+import { Icon, type IconName } from "@/components/icons";
 import { PageHero } from "@/components/page-hero";
-import { about, stats } from "@/data/content";
+import { SectionHeading } from "@/components/section-heading";
+import { TrustedBy } from "@/components/sections/trusted-by";
+import { about, coreExpertise, industries, journey, stats, testimonials } from "@/data/content";
 
 export const Route = createFileRoute("/about")({ component: AboutPage });
 
@@ -53,6 +55,55 @@ function AboutPage() {
         </div>
       </section>
 
+      <section className="container-page py-14">
+        <SectionHeading title="My Journey" />
+        <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {journey.map((j) => (
+            <li key={j.n} className="rounded-2xl border border-border bg-card p-5">
+              <span className="font-display text-2xl font-extrabold text-primary">{j.n}</span>
+              <h3 className="mt-2 font-display text-base font-bold">{j.title}</h3>
+              <p className="mt-1 text-sm leading-relaxed text-muted">{j.body}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="container-page pb-14">
+        <SectionHeading title="Core Expertise" />
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-7">
+          {coreExpertise.map((c) => (
+            <div
+              key={c.title}
+              className="flex flex-col items-center gap-2.5 rounded-2xl border border-border bg-card px-3 py-5 text-center"
+            >
+              <span className="grid size-10 place-items-center rounded-xl bg-primary-soft text-primary">
+                <Icon name={c.icon as IconName} className="size-4.5" />
+              </span>
+              <span className="text-xs leading-tight font-bold">{c.title}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="container-page pb-14">
+        <SectionHeading title="Industries I Work With" />
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+          {industries.map((ind) => (
+            <div
+              key={ind.label}
+              className="flex flex-col items-center gap-2.5 rounded-2xl border border-border bg-card px-3 py-6 text-center"
+            >
+              <span className="grid size-11 place-items-center rounded-xl bg-primary-soft text-primary">
+                <Icon name={ind.icon as IconName} className="size-5" />
+              </span>
+              <span className="text-xs leading-tight font-bold">{ind.label}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <TrustedBy />
+
       <section className="container-page grid gap-4 py-14 sm:grid-cols-3">
         {about.values.map((v) => (
           <article key={v.title} className="rounded-2xl border border-border bg-card p-6">
@@ -60,6 +111,34 @@ function AboutPage() {
             <p className="mt-2 text-sm leading-relaxed text-muted">{v.body}</p>
           </article>
         ))}
+      </section>
+
+      <section className="container-page pb-16">
+        <SectionHeading
+          title="What Clients Say"
+          action={
+            <Button asChild variant="outline" size="sm">
+              <Link to="/testimonials">
+                See all
+                <Icon name="arrow" className="size-4" />
+              </Link>
+            </Button>
+          }
+        />
+        <div className="grid gap-5 sm:grid-cols-3">
+          {testimonials.slice(0, 3).map((t) => (
+            <article key={t.name} className="rounded-3xl border border-border bg-card p-6">
+              <p className="text-sm leading-relaxed font-medium">&ldquo;{t.quote}&rdquo;</p>
+              <div className="mt-5 flex items-center gap-3">
+                <img src={t.avatar} alt="" className="size-10 rounded-full object-cover" />
+                <div>
+                  <p className="text-sm font-bold">{t.name}</p>
+                  <p className="text-xs text-muted">{t.role}</p>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
       </section>
     </>
   );

@@ -13,11 +13,12 @@ export const site = {
 
 export const nav = [
   { label: "Home", to: "/" },
-  { label: "About", to: "/about" },
+  { label: "Work", to: "/projects" },
   { label: "Services", to: "/services" },
-  { label: "Projects", to: "/projects" },
+  { label: "About", to: "/about" },
   { label: "Tools", to: "/tools" },
   { label: "Testimonials", to: "/testimonials" },
+  { label: "Contact", to: "/contact" },
 ] as const;
 
 export const stats = [
@@ -58,11 +59,23 @@ export const highlightBar = [
   },
 ] as const;
 
+/** Home page "What I Build" dark strip — from imagination to intelligent systems. */
+export const whatIBuild = [
+  { title: "AI Cinematic Video", subtitle: "Storytelling with AI", icon: "video" },
+  { title: "Generative Image Design", subtitle: "Visuals that inspire", icon: "image" },
+  { title: "Websites & UI/UX", subtitle: "Modern digital experiences", icon: "monitor" },
+  { title: "Claude AI Automation", subtitle: "Smarter workflows", icon: "spark" },
+  { title: "Custom AI Bots", subtitle: "AI that works for you", icon: "bot" },
+  { title: "Workflow Automation", subtitle: "Save time. Do more.", icon: "refresh" },
+  { title: "API Integrations", subtitle: "Connect. Create. Scale.", icon: "link" },
+  { title: "Creative Systems", subtitle: "Ideas into ecosystems", icon: "bulb" },
+] as const;
+
 export const services = [
   {
     slug: "website-development",
-    title: "Website Development",
-    icon: "globe",
+    title: "Websites & UI/UX",
+    icon: "monitor",
     summary: "Modern, responsive & conversion focused websites.",
     body: "From personal brands to product sites — designed to load fast, look sharp on every screen, and turn visitors into clients.",
     deliverables: [
@@ -70,6 +83,32 @@ export const services = [
       "Mobile-first build",
       "SEO-ready structure",
       "Analytics & forms",
+    ],
+  },
+  {
+    slug: "ai-cinematic-video",
+    title: "AI Cinematic Video",
+    icon: "video",
+    summary: "Story-driven AI video for brands, products and campaigns.",
+    body: "High-quality cinematic visuals — concept to final cut — for ads, socials and product launches, produced faster with AI in the loop.",
+    deliverables: [
+      "Concept & script",
+      "AI-generated footage",
+      "Color grade & sound",
+      "Export for every platform",
+    ],
+  },
+  {
+    slug: "generative-image-design",
+    title: "Generative Image Design",
+    icon: "image",
+    summary: "On-brand AI imagery for campaigns, products and socials.",
+    body: "Hero shots, product visuals and social creative generated and art-directed to match your brand — no stock-photo look.",
+    deliverables: [
+      "Visual direction",
+      "Iterative AI generation",
+      "Retouch & brand pass",
+      "Export kit for every channel",
     ],
   },
   {
@@ -87,7 +126,7 @@ export const services = [
   },
   {
     slug: "bot-creation",
-    title: "Bot Creation",
+    title: "Custom AI Bots",
     icon: "bot",
     summary: "Custom AI bots for business, study or personal use.",
     body: "Always-on assistants that answer, qualify, tutor, or operate tools — trained on your knowledge, not generic chat.",
@@ -100,7 +139,7 @@ export const services = [
   },
   {
     slug: "claude-ai",
-    title: "Claude AI Integration",
+    title: "Claude AI Automation",
     icon: "spark",
     summary: "Smart solutions using Claude AI's powerful models.",
     body: "Research agents, writing systems, and analysis tools built on Claude — for teams that need depth, not just another chatbot.",
@@ -109,6 +148,19 @@ export const services = [
       "Tool use / function calling",
       "Private knowledge",
       "Eval loops",
+    ],
+  },
+  {
+    slug: "workflow-automation",
+    title: "Workflow Automation",
+    icon: "refresh",
+    summary: "Save time. Do more. Systems that run without you.",
+    body: "Visual, resilient workflows across the tools you already use — so information moves and work gets done without manual handoffs.",
+    deliverables: [
+      "Workflow mapping",
+      "Make / n8n / Zapier build",
+      "Error handling & alerts",
+      "Documentation & handoff",
     ],
   },
   {
@@ -135,6 +187,32 @@ export const services = [
       "Error handling",
       "Webhooks",
       "Admin visibility",
+    ],
+  },
+  {
+    slug: "3d-visualization",
+    title: "3D Visualization",
+    icon: "cube",
+    summary: "Ideas into immersive worlds.",
+    body: "Product renders, architectural walkthroughs and 3D brand visuals that sell the idea before anything is built.",
+    deliverables: [
+      "Reference & moodboard",
+      "3D modeling & lighting",
+      "Render pass",
+      "Interactive/video export",
+    ],
+  },
+  {
+    slug: "social-media-campaigns",
+    title: "Social Media Campaigns",
+    icon: "share",
+    summary: "Content that converts, across every channel.",
+    body: "Campaign concepts, creative sets and a posting system built for Instagram, YouTube, LinkedIn and TikTok — designed to be reused, not one-off.",
+    deliverables: [
+      "Campaign concept",
+      "Creative set (video + static)",
+      "Channel-ready exports",
+      "Posting calendar",
     ],
   },
 ] as const;
@@ -172,6 +250,15 @@ export const processSteps = [
   },
 ] as const;
 
+/** Reused on every case study page — the same production approach, not project-specific claims. */
+export const caseStudyProcess = [
+  { n: "1", title: "Research & Reference", body: "Market study, brand understanding, visual direction." },
+  { n: "2", title: "AI Ideation", body: "Concept development with AI image & video generation." },
+  { n: "3", title: "Refine & Direct", body: "Iterate, enhance and guide visuals for brand alignment." },
+  { n: "4", title: "Post-Production", body: "Color grading, sound, cinematic edits, final polish." },
+  { n: "5", title: "Multi-Platform Delivery", body: "Format for web, social, ads, outdoor and presentations." },
+] as const;
+
 export const projects = [
   {
     slug: "ai-study-assistant",
@@ -187,6 +274,11 @@ export const projects = [
       "A Claude-powered study bot that ingests PDFs, generates quizzes, explains answers in the student's voice, and logs weak topics.",
     result: "Average study time dropped 40% for the pilot group, with higher quiz scores in two weeks.",
     stack: ["Claude", "WhatsApp", "Notion", "Python"],
+    impact: [
+      { value: "40%", label: "Less study time" },
+      { value: "2 wks", label: "To higher quiz scores" },
+    ],
+    featured: false,
   },
   {
     slug: "ecommerce-automation",
@@ -202,6 +294,11 @@ export const projects = [
       "A storefront plus a workflow layer that syncs inventory, nudges carts, and drafts customer replies for review.",
     result: "12 hours/week returned to the founder. Cart recovery up 18%.",
     stack: ["Shopify", "Make", "Claude", "Slack"],
+    impact: [
+      { value: "12 hrs/wk", label: "Time returned" },
+      { value: "+18%", label: "Cart recovery" },
+    ],
+    featured: true,
   },
   {
     slug: "custom-business-bot",
@@ -217,6 +314,11 @@ export const projects = [
       "A branded bot on the site and WhatsApp that qualifies, books calendar slots, and hands warm leads to the team with a briefing.",
     result: "Response time went from hours to under a minute. 2.4× more booked calls.",
     stack: ["Claude", "Calendly", "HubSpot", "WhatsApp"],
+    impact: [
+      { value: "<1 min", label: "Response time" },
+      { value: "2.4×", label: "More booked calls" },
+    ],
+    featured: false,
   },
   {
     slug: "portfolio-website",
@@ -232,7 +334,38 @@ export const projects = [
       "A red-black-white brand system, tight copy, and a brief form that captures service, budget and context.",
     result: "Inquiry quality jumped — most briefs now arrive ready to scope.",
     stack: ["React", "Tailwind", "Analytics"],
+    impact: [{ value: "Ready to scope", label: "Most briefs now arrive" }],
+    featured: false,
   },
+] as const;
+
+/** Generic, unbranded placeholders — swap in real client names/logos when supplied. */
+export const trustedBy = [
+  "Healthcare",
+  "Real Estate",
+  "EdTech",
+  "D2C / E-Commerce",
+  "Consulting",
+  "AI Products",
+] as const;
+
+export const industries = [
+  { label: "Healthcare", icon: "heart" },
+  { label: "Real Estate", icon: "home" },
+  { label: "Jewelry & Retail", icon: "gem" },
+  { label: "AI Products", icon: "bot" },
+  { label: "Social Campaigns", icon: "share" },
+  { label: "Education", icon: "graduation" },
+] as const;
+
+export const coreExpertise = [
+  { title: "AI Content Creation", icon: "spark" },
+  { title: "Video Editing", icon: "video" },
+  { title: "UI/UX Design", icon: "monitor" },
+  { title: "Automation Workflows", icon: "refresh" },
+  { title: "Brand Storytelling", icon: "chat" },
+  { title: "Creative Direction", icon: "target" },
+  { title: "3D & Motion Graphics", icon: "cube" },
 ] as const;
 
 export const testimonials = [
@@ -297,6 +430,13 @@ export const tools = [
   },
 ] as const;
 
+export const journey = [
+  { n: "01", title: "Design Foundations", body: "Built a strong foundation in design, visual communication and creative thinking." },
+  { n: "02", title: "Multimedia & Video", body: "Expanded into video editing, motion graphics and cinematic storytelling." },
+  { n: "03", title: "AI Integration", body: "Explored and integrated AI tools into creative workflows to work smarter and faster." },
+  { n: "04", title: "Creative AI Specialist", body: "Bringing together design, AI and automation to create impactful brand experiences." },
+] as const;
+
 export const about = {
   kicker: "About",
   title: "Builder. Automator. Partner.",
@@ -319,6 +459,13 @@ export const socials = [
   { label: "Email", href: "mailto:hello@vedprakash.build", icon: "mail" },
 ] as const;
 
+export const collaborationProcess = [
+  { n: "01", title: "Discover", body: "Understand your goals and explore possibilities.", icon: "compass" },
+  { n: "02", title: "Plan", body: "Define the right strategy and solution approach.", icon: "file" },
+  { n: "03", title: "Create", body: "Design, develop and bring your vision to life.", icon: "cog" },
+  { n: "04", title: "Deliver", body: "Launch, iterate and scale for greater impact.", icon: "rocket" },
+] as const;
+
 export const serviceOptions = [
   "Website Development",
   "AI Automation",
@@ -326,6 +473,7 @@ export const serviceOptions = [
   "Claude AI Integration",
   "Custom AI Tools",
   "API & Integrations",
+  "AI Cinematic Video",
   "Not sure yet",
 ] as const;
 
