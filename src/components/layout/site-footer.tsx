@@ -30,7 +30,7 @@ export function SiteFooter() {
         <p className="text-sm text-muted">
           Made with{" "}
           <Heart className="mx-0.5 inline size-3.5 fill-primary text-primary" aria-hidden />{" "}
-          by Kunal
+          by Vedprakash
           <span className="mt-0.5 block text-muted-2">Ideas to a Smarter Tomorrow</span>
         </p>
       </div>

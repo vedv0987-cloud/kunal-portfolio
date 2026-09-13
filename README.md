@@ -1,4 +1,4 @@
-# KUNAL — Ideas to Intelligent Solutions
+# VEDPRAKASH — Ideas to Intelligent Solutions
 
 Personal brand site for AI websites, automation systems, and custom bots.
 

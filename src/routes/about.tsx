@@ -17,7 +17,7 @@ function AboutPage() {
       <section className="container-page grid items-center gap-10 py-14 lg:grid-cols-2">
         <img
           src="/images/about-desk.jpg"
-          alt="Kunal working at a dual-monitor desk"
+          alt="Vedprakash working at a dual-monitor desk"
           className="w-full rounded-3xl object-cover"
         />
         <div>

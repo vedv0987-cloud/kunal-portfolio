@@ -1,12 +1,12 @@
 export const site = {
-  name: "Kunal",
+  name: "Vedprakash",
   tagline: "Build · Automate · Grow",
   headline: "Ideas to Intelligent",
   headlineAccent: "Solutions",
   eyebrow: "AI · Automation · Real Results",
   intro:
     "I build AI powered websites, automation systems and smart bots that save time, increase productivity and help you grow.",
-  email: "hello@kunal.build",
+  email: "hello@vedprakash.build",
   location: "Available worldwide",
   hoodieLine: ["Discipline", "Creates", "Freedom"],
 } as const;
@@ -238,7 +238,7 @@ export const projects = [
 export const testimonials = [
   {
     quote:
-      "Kunal delivered an amazing AI automation system for my business. Super professional, fast and creative! Highly recommended!",
+      "Vedprakash delivered an amazing AI automation system for my business. Super professional, fast and creative! Highly recommended!",
     name: "Rohit Sharma",
     role: "Business Owner",
     avatar: "/images/avatar-rohit.jpg",
@@ -254,7 +254,7 @@ export const testimonials = [
   },
   {
     quote:
-      "Clean build, honest timelines, and the bot started booking calls the same week it launched. Kunal just gets it.",
+      "Clean build, honest timelines, and the bot started booking calls the same week it launched. Vedprakash just gets it.",
     name: "Kenji Sato",
     role: "Head of Growth",
     avatar: "/images/avatar-kenji.jpg",
@@ -316,7 +316,7 @@ export const socials = [
   { label: "LinkedIn", href: "https://www.linkedin.com/", icon: "linkedin" },
   { label: "Instagram", href: "https://www.instagram.com/", icon: "instagram" },
   { label: "GitHub", href: "https://github.com/", icon: "github" },
-  { label: "Email", href: "mailto:hello@kunal.build", icon: "mail" },
+  { label: "Email", href: "mailto:hello@vedprakash.build", icon: "mail" },
 ] as const;
 
 export const serviceOptions = [

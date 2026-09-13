@@ -52,7 +52,7 @@ export function Hero() {
             <div className="relative mx-auto aspect-[4/5] w-full max-w-[420px] sm:max-w-[460px] lg:max-w-[480px]">
               <img
                 src="/images/hero-portrait.jpg"
-                alt="Kunal, AI builder"
+                alt="Vedprakash, AI builder"
                 className="absolute inset-0 size-full object-contain object-[center_12%]"
               />
 

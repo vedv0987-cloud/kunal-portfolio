@@ -7,7 +7,7 @@ import { SiteShell } from "@/components/layout/site-shell";
 import { BackToTop } from "@/components/back-to-top";
 import appCss from "../styles.css?url";
 
-const APP_NAME = "KUNAL";
+const APP_NAME = "VEDPRAKASH";
 
 export const Route = createRootRoute({
   head: () => ({
@@ -18,7 +18,7 @@ export const Route = createRootRoute({
       {
         name: "description",
         content:
-          "Kunal builds AI powered websites, automation systems and smart bots that save time and help you grow.",
+          "Vedprakash builds AI powered websites, automation systems and smart bots that save time and help you grow.",
       },
       { name: "theme-color", content: "#E11D2E" },
     ],
