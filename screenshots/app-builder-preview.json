@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "KUNAL",
+      "hasCanvas": false,
+      "bodyTextLen": 1945,
+      "bodyTextHash": "0d87d3764087c2faec85a361b07384a15b4846c1c51fadd7c1e1c46812d6af81",
+      "bodyTextPrefix": "K KUNAL BUILD · AUTOMATE · GROW Home About Services Projects Too",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "KUNAL",
+      "hasCanvas": false,
+      "bodyTextLen": 1844,
+      "bodyTextHash": "fd9b5b1a4816e00cfc8a6482042f1f23d07dfbefe9717cb9b21e5454c2c99d2a",
+      "bodyTextPrefix": "K KUNAL BUILD · AUTOMATE · GROW AI · AUTOMATION · REAL RESULTS I",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}

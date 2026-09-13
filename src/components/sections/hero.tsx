@@ -1,0 +1,117 @@
+import { Link } from "@tanstack/react-router";
+import { Button } from "@/components/ui/button";
+import { Icon, type IconName } from "@/components/icons";
+import { heroRail, highlightBar, site, stats } from "@/data/content";
+
+export function Hero() {
+  return (
+    <section className="relative overflow-hidden pt-4 pb-10 sm:pt-8 lg:pt-10">
+      <div className="container-page">
+        <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-4">
+          <div className="rise-in max-w-xl">
+            <p className="mb-5 flex items-center gap-2 text-[11px] font-bold tracking-[0.22em] text-primary uppercase">
+              <span className="inline-block h-0.5 w-4 rounded-full bg-primary" />
+              {site.eyebrow}
+            </p>
+            <h1 className="font-display text-[2.55rem] font-extrabold tracking-tight sm:text-6xl lg:text-[4.15rem]">
+              {site.headline}
+              <span className="mt-1 block text-primary">{site.headlineAccent}</span>
+            </h1>
+            <p className="mt-5 max-w-md text-base leading-relaxed text-muted sm:text-[17px]">
+              {site.intro}
+            </p>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <Button asChild size="lg">
+                <Link to="/contact">
+                  Start a Project
+                  <Icon name="arrow" className="size-4" />
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg">
+                <Link to="/projects">
+                  <span className="grid size-7 place-items-center rounded-full bg-primary-soft text-primary">
+                    <Icon name="play" className="size-3.5" />
+                  </span>
+                  View My Work
+                </Link>
+              </Button>
+            </div>
+            <dl className="mt-10 grid grid-cols-3 gap-4 border-t border-border pt-6">
+              {stats.map((s) => (
+                <div key={s.label}>
+                  <dt className="text-[11px] leading-snug text-muted sm:text-xs">{s.label}</dt>
+                  <dd className="mt-1 font-display text-2xl font-extrabold tracking-tight sm:text-3xl">
+                    {s.value}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+
+          <div className="relative flex items-center justify-center gap-2">
+            <div className="relative mx-auto aspect-[4/5] w-full max-w-[420px] sm:max-w-[460px] lg:max-w-[480px]">
+              <img
+                src="/images/hero-portrait.jpg"
+                alt="Kunal, AI builder"
+                className="absolute inset-0 size-full object-contain object-[center_12%]"
+              />
+
+              <div className="float-y absolute top-[6%] left-0 max-w-[42%] -rotate-6 rounded-xl bg-card px-3 py-2 text-[11px] font-bold shadow-[var(--shadow)] sm:text-xs">
+                Same Ideas
+                <span className="block text-primary">Bigger Impact</span>
+              </div>
+              <div className="absolute top-[14%] right-[2%] hidden rotate-6 rounded-xl bg-card/95 px-3 py-2 text-[11px] font-bold shadow-[var(--shadow)] sm:block">
+                Build
+                <span className="block text-primary">Automate Grow</span>
+              </div>
+              <div className="absolute bottom-[18%] left-0 rounded-2xl border border-border bg-card px-3.5 py-2.5 shadow-[var(--shadow)]">
+                <p className="flex items-center gap-2 text-xs font-bold">
+                  Automating
+                  <span className="rounded-md bg-primary px-1.5 py-0.5 text-[9px] font-extrabold text-primary-fg">
+                    AI
+                  </span>
+                </p>
+                <p className="text-xs font-bold">
+                  a Smarter <span className="text-primary">Tomorrow</span>
+                </p>
+              </div>
+              <div className="absolute right-0 bottom-[10%] rounded-full bg-ink px-3.5 py-2 text-[11px] font-semibold text-ink-fg shadow-lg">
+                You imagine. I build.
+              </div>
+            </div>
+
+            <aside className="hidden w-[158px] shrink-0 rounded-2xl border border-border bg-card p-2 shadow-[var(--shadow)] 2xl:block">
+              {heroRail.map((item) => (
+                <div
+                  key={item.label}
+                  className="flex items-center gap-2.5 rounded-xl px-2 py-2 text-sm font-semibold"
+                >
+                  <span className="grid size-8 place-items-center rounded-lg bg-primary-soft text-primary">
+                    <Icon name={item.icon as IconName} className="size-4" />
+                  </span>
+                  {item.label}
+                </div>
+              ))}
+            </aside>
+          </div>
+        </div>
+
+        <div className="mt-8 overflow-hidden rounded-[1.6rem] bg-ink text-ink-fg">
+          <ul className="grid divide-y divide-white/10 sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-4">
+            {highlightBar.map((item) => (
+              <li key={item.title} className="flex items-center gap-3 px-6 py-5">
+                <span className="grid size-10 place-items-center rounded-xl bg-white/10 text-primary">
+                  <Icon name={item.icon as IconName} className="size-5" />
+                </span>
+                <div>
+                  <p className="font-bold">{item.title}</p>
+                  <p className="text-sm text-white/65">{item.subtitle}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+  );
+}
