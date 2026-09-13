@@ -17,7 +17,6 @@ export const nav = [
   { label: "Services", to: "/services" },
   { label: "About", to: "/about" },
   { label: "Tools", to: "/tools" },
-  { label: "Testimonials", to: "/testimonials" },
   { label: "Contact", to: "/contact" },
 ] as const;
 
@@ -25,6 +24,14 @@ export const stats = [
   { value: "50+", label: "Projects Completed" },
   { value: "30+", label: "Happy Clients" },
   { value: "100%", label: "Focus on Results" },
+] as const;
+
+/** Home hero's 4-stat row — kept separate from `stats` so About/Contact's 3-col grids don't shift. */
+export const heroStats = [
+  { value: "50+", label: "Projects Delivered" },
+  { value: "30+", label: "Happy Clients" },
+  { value: "5+", label: "Industries" },
+  { value: "∞", label: "Bigger Possibilities" },
 ] as const;
 
 export const heroRail = [

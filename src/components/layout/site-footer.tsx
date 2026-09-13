@@ -1,16 +1,34 @@
+import { Link } from "@tanstack/react-router";
 import { Heart } from "lucide-react";
 import { Logo } from "@/components/logo";
 import { Icon, type IconName } from "@/components/icons";
-import { socials } from "@/data/content";
+import { nav, socials } from "@/data/content";
 
 export function SiteFooter() {
   return (
     <footer className="border-t border-border bg-background">
-      <div className="container-page flex flex-col gap-6 py-8 sm:flex-row sm:items-center sm:justify-between">
-        <Logo />
+      <div className="container-page flex flex-col gap-6 py-8">
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+          <Logo />
 
-        <div className="flex flex-wrap items-center gap-4">
-          <span className="text-sm font-semibold text-muted">Let's Connect</span>
+          <nav className="flex flex-wrap items-center gap-x-5 gap-y-2" aria-label="Footer">
+            {nav.map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                className="text-sm font-semibold text-muted transition-colors hover:text-foreground"
+              >
+                {item.label}
+              </Link>
+            ))}
+            <Link
+              to="/testimonials"
+              className="text-sm font-semibold text-muted transition-colors hover:text-foreground"
+            >
+              Testimonials
+            </Link>
+          </nav>
+
           <div className="flex items-center gap-2">
             {socials.map((s) => (
               <a

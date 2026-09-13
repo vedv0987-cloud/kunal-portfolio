@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { Icon, type IconName } from "@/components/icons";
-import { heroRail, highlightBar, site, stats } from "@/data/content";
+import { heroRail, heroStats, highlightBar, site } from "@/data/content";
 
 export function Hero() {
   return (
@@ -36,8 +36,8 @@ export function Hero() {
                 </Link>
               </Button>
             </div>
-            <dl className="mt-10 grid grid-cols-3 gap-4 border-t border-border pt-6">
-              {stats.map((s) => (
+            <dl className="mt-10 grid grid-cols-2 gap-4 border-t border-border pt-6 sm:grid-cols-4">
+              {heroStats.map((s) => (
                 <div key={s.label}>
                   <dt className="text-[11px] leading-snug text-muted sm:text-xs">{s.label}</dt>
                   <dd className="mt-1 font-display text-2xl font-extrabold tracking-tight sm:text-3xl">
@@ -49,6 +49,13 @@ export function Hero() {
           </div>
 
           <div className="relative flex items-center justify-center gap-2">
+            <p className="absolute -right-1 top-0 hidden -translate-y-full flex-col items-end gap-3 text-right text-[11px] font-bold tracking-[0.2em] text-muted uppercase 2xl:flex">
+              <span className="max-w-[8ch] leading-relaxed">AI Creativity for a Brighter World</span>
+              <span className="flex items-center gap-1.5 text-muted-2">
+                Scroll
+                <span aria-hidden>↓</span>
+              </span>
+            </p>
             <div className="relative mx-auto aspect-[4/5] w-full max-w-[420px] sm:max-w-[460px] lg:max-w-[480px]">
               <img
                 src="/images/hero-portrait.jpg"
