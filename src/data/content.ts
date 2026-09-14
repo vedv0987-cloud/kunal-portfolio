@@ -1,6 +1,6 @@
 export const site = {
   name: "Vedprakash",
-  tagline: "Build · Automate · Grow",
+  tagline: "Creative AI Specialist",
   headline: "Ideas to Intelligent",
   headlineAccent: "Solutions",
   eyebrow: "AI · Automation · Real Results",

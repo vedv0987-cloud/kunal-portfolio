@@ -1,0 +1,27 @@
+{
+  "status": "stopped_by_user",
+  "saved": 193,
+  "total": 250,
+  "remaining": 57,
+  "next": "contact/fields/email",
+  "qaRedo": [
+    "home/service-artwork/websites-uiux",
+    "work/cards/blu-diamond",
+    "work/cards/claude-ai",
+    "work/cards/realatte-ai",
+    "home/promo-real-estate",
+    "contact/channel-cards/linkedin",
+    "contact/channel-cards/youtube",
+    "contact/cta-banner",
+    "shared/icons/integrations",
+    "shared/icons/creative-image",
+    "shared/filters/websites",
+    "shared/filters/automation",
+    "shared/filters/healthcare",
+    "shared/filters/real-estate",
+    "shared/filters/uiux",
+    "shared/icons/email",
+    "shared/filters/social"
+  ],
+  "note": "Owner stopped generation and requested a Claude Code website upgrade roadmap. Do not resume automatically."
+}
