@@ -68,13 +68,13 @@ export const highlightBar = [
 
 /** Home page "What I Build" dark strip — from imagination to intelligent systems. */
 export const whatIBuild = [
-  { title: "AI Cinematic Video", subtitle: "Storytelling with AI", icon: "video" },
-  { title: "Generative Image Design", subtitle: "Visuals that inspire", icon: "image" },
-  { title: "Websites & UI/UX", subtitle: "Modern digital experiences", icon: "monitor" },
-  { title: "Claude AI Automation", subtitle: "Smarter workflows", icon: "spark" },
-  { title: "Custom AI Bots", subtitle: "AI that works for you", icon: "bot" },
-  { title: "Workflow Automation", subtitle: "Save time. Do more.", icon: "refresh" },
-  { title: "API Integrations", subtitle: "Connect. Create. Scale.", icon: "link" },
+  { title: "AI Cinematic Video", subtitle: "Storytelling with AI", icon: "video", image: "/images/services/service-ai-cinematic-video/service-ai-cinematic-video.jpg" },
+  { title: "Generative Image Design", subtitle: "Visuals that inspire", icon: "image", image: "/images/services/service-generative-image-design/service-generative-image-design.jpg" },
+  { title: "Websites & UI/UX", subtitle: "Modern digital experiences", icon: "monitor", image: "/images/services/service-website-development/service-website-development.jpg" },
+  { title: "Claude AI Automation", subtitle: "Smarter workflows", icon: "spark", image: "/images/services/service-claude-ai/service-claude-ai.jpg" },
+  { title: "Custom AI Bots", subtitle: "AI that works for you", icon: "bot", image: "/images/services/service-bot-creation/service-bot-creation.jpg" },
+  { title: "Workflow Automation", subtitle: "Save time. Do more.", icon: "refresh", image: "/images/services/service-workflow-automation/service-workflow-automation.jpg" },
+  { title: "API Integrations", subtitle: "Connect. Create. Scale.", icon: "link", image: "/images/services/service-api-integrations/service-api-integrations.jpg" },
   { title: "Creative Systems", subtitle: "Ideas into ecosystems", icon: "bulb" },
 ] as const;
 
@@ -83,6 +83,7 @@ export const services = [
     slug: "website-development",
     title: "Websites & UI/UX",
     icon: "monitor",
+    image: "/images/services/service-website-development/service-website-development.jpg",
     summary: "Modern, responsive & conversion focused websites.",
     body: "From personal brands to product sites — designed to load fast, look sharp on every screen, and turn visitors into clients.",
     deliverables: [
@@ -96,6 +97,7 @@ export const services = [
     slug: "ai-cinematic-video",
     title: "AI Cinematic Video",
     icon: "video",
+    image: "/images/services/service-ai-cinematic-video/service-ai-cinematic-video.jpg",
     summary: "Story-driven AI video for brands, products and campaigns.",
     body: "High-quality cinematic visuals — concept to final cut — for ads, socials and product launches, produced faster with AI in the loop.",
     deliverables: [
@@ -109,6 +111,7 @@ export const services = [
     slug: "generative-image-design",
     title: "Generative Image Design",
     icon: "image",
+    image: "/images/services/service-generative-image-design/service-generative-image-design.jpg",
     summary: "On-brand AI imagery for campaigns, products and socials.",
     body: "Hero shots, product visuals and social creative generated and art-directed to match your brand — no stock-photo look.",
     deliverables: [
@@ -122,6 +125,7 @@ export const services = [
     slug: "ai-automation",
     title: "AI Automation",
     icon: "zap",
+    image: "/images/services/service-ai-automation/service-ai-automation.jpg",
     summary: "Automate repetitive tasks and save hours.",
     body: "I map the busywork in your business and replace it with reliable workflows — lead capture, reporting, follow-ups, content ops.",
     deliverables: [
@@ -135,6 +139,7 @@ export const services = [
     slug: "bot-creation",
     title: "Custom AI Bots",
     icon: "bot",
+    image: "/images/services/service-bot-creation/service-bot-creation.jpg",
     summary: "Custom AI bots for business, study or personal use.",
     body: "Always-on assistants that answer, qualify, tutor, or operate tools — trained on your knowledge, not generic chat.",
     deliverables: [
@@ -148,6 +153,7 @@ export const services = [
     slug: "claude-ai",
     title: "Claude AI Automation",
     icon: "spark",
+    image: "/images/services/service-claude-ai/service-claude-ai.jpg",
     summary: "Smart solutions using Claude AI's powerful models.",
     body: "Research agents, writing systems, and analysis tools built on Claude — for teams that need depth, not just another chatbot.",
     deliverables: [
@@ -161,6 +167,7 @@ export const services = [
     slug: "workflow-automation",
     title: "Workflow Automation",
     icon: "refresh",
+    image: "/images/services/service-workflow-automation/service-workflow-automation.jpg",
     summary: "Save time. Do more. Systems that run without you.",
     body: "Visual, resilient workflows across the tools you already use — so information moves and work gets done without manual handoffs.",
     deliverables: [
@@ -174,6 +181,7 @@ export const services = [
     slug: "custom-tools",
     title: "Custom AI Tools",
     icon: "wrench",
+    image: "/images/services/service-custom-tools/service-custom-tools.jpg",
     summary: "Tailored tools for your unique needs.",
     body: "Internal dashboards, generators, and operators designed around how you actually work — not a template with your logo.",
     deliverables: [
@@ -187,6 +195,7 @@ export const services = [
     slug: "api-integrations",
     title: "API & Integrations",
     icon: "link",
+    image: "/images/services/service-api-integrations/service-api-integrations.jpg",
     summary: "Connect your favorite apps and platforms.",
     body: "Make your stack talk. CRMs, sheets, WhatsApp, Stripe, Notion, calendars — wired so information moves without you copying it.",
     deliverables: [
@@ -200,6 +209,7 @@ export const services = [
     slug: "3d-visualization",
     title: "3D Visualization",
     icon: "cube",
+    image: "/images/services/service-3d-visualization/service-3d-visualization.jpg",
     summary: "Ideas into immersive worlds.",
     body: "Product renders, architectural walkthroughs and 3D brand visuals that sell the idea before anything is built.",
     deliverables: [
@@ -213,6 +223,7 @@ export const services = [
     slug: "social-media-campaigns",
     title: "Social Media Campaigns",
     icon: "share",
+    image: "/images/services/service-social-media-campaigns/service-social-media-campaigns.jpg",
     summary: "Content that converts, across every channel.",
     body: "Campaign concepts, creative sets and a posting system built for Instagram, YouTube, LinkedIn and TikTok — designed to be reused, not one-off.",
     deliverables: [

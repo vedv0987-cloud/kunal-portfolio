@@ -40,6 +40,14 @@ function ServicesPage() {
             className="scroll-mt-24 grid gap-6 rounded-3xl border border-border bg-card p-6 sm:p-8 lg:grid-cols-[0.9fr_1.1fr]"
           >
             <div>
+              <div className="relative mb-5 aspect-video overflow-hidden rounded-2xl bg-ink">
+                <img
+                  src={s.image}
+                  alt=""
+                  loading="lazy"
+                  className="h-full w-full object-cover"
+                />
+              </div>
               <span className="grid size-12 place-items-center rounded-2xl bg-primary-soft text-primary">
                 <Icon name={s.icon as IconName} className="size-5" />
               </span>

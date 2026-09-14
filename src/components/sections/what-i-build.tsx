@@ -20,18 +20,29 @@ export function WhatIBuild() {
             {whatIBuild.map((item) => (
               <li
                 key={item.title}
-                className="group border-t border-white/10 px-5 py-6 transition-colors hover:bg-white/[0.04] sm:px-6"
+                className="group relative overflow-hidden border-t border-white/10 px-5 py-6 transition-colors hover:bg-white/[0.04] sm:px-6"
               >
-                <span className="grid size-10 place-items-center rounded-xl bg-white/10 text-primary">
+                {"image" in item && item.image ? (
+                  <>
+                    <img
+                      src={item.image}
+                      alt=""
+                      loading="lazy"
+                      className="absolute inset-0 h-full w-full object-cover opacity-25 transition-opacity duration-300 group-hover:opacity-40"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/20" />
+                  </>
+                ) : null}
+                <span className="relative grid size-10 place-items-center rounded-xl bg-white/10 text-primary">
                   <Icon name={item.icon as IconName} className="size-5" />
                 </span>
-                <h3 className="mt-4 font-display text-[15px] font-bold tracking-tight">
+                <h3 className="relative mt-4 font-display text-[15px] font-bold tracking-tight">
                   {item.title}
                 </h3>
-                <p className="mt-1 text-xs text-white/55">{item.subtitle}</p>
+                <p className="relative mt-1 text-xs text-white/55">{item.subtitle}</p>
                 <Link
                   to="/services"
-                  className="mt-4 grid size-7 place-items-center rounded-full border border-white/15 text-white/60 transition-colors group-hover:border-primary group-hover:text-primary"
+                  className="relative mt-4 grid size-7 place-items-center rounded-full border border-white/15 text-white/60 transition-colors group-hover:border-primary group-hover:text-primary"
                   aria-label={`Learn more about ${item.title}`}
                 >
                   <Icon name="arrow" className="size-3.5" />
