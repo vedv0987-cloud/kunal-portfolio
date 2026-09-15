@@ -1,8 +1,19 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/icons";
-import { caseStudyProcess, projects } from "@/data/content";
+import { projects } from "@/data/content";
 import { visualAssets } from "@/data/visual-assets";
+
+// Roadmap Phase F — case-study/workflow/* are complete cards (number/icon/
+// title/body baked in) whose text matches caseStudyProcess exactly (real,
+// already-approved copy) — used as-is instead of the live-rendered list.
+const WORKFLOW_ASSETS = [
+  "case-study/workflow/research-reference",
+  "case-study/workflow/ai-ideation",
+  "case-study/workflow/refine-direct",
+  "case-study/workflow/post-production",
+  "case-study/workflow/multi-platform",
+];
 
 export const Route = createFileRoute("/projects/$slug")({
   loader: ({ params }) => {
@@ -98,16 +109,34 @@ function ProjectDetail() {
                 AI Production Workflow
               </h2>
               <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
-                {caseStudyProcess.map((step) => (
-                  <li key={step.n} className="rounded-2xl border border-border bg-card p-5">
-                    <span className="font-display text-2xl font-extrabold text-primary">{step.n}</span>
-                    <h3 className="mt-2 font-display text-sm font-bold">{step.title}</h3>
-                    <p className="mt-1 text-xs leading-relaxed text-muted">{step.body}</p>
+                {WORKFLOW_ASSETS.map((key) => (
+                  <li key={key} className="overflow-hidden rounded-2xl border border-border">
+                    <img src={visualAssets[key].url} alt="" className="w-full" />
                   </li>
                 ))}
               </ol>
             </div>
           </section>
+
+          {/* Gallery — only generic, unbranded photography (see data/content.ts for what was excluded and why). */}
+          {project.gallery.length ? (
+            <section className="container-page py-14">
+              <h2 className="font-display mb-8 flex items-center gap-3 text-2xl font-extrabold tracking-tight sm:text-3xl">
+                <span className="inline-block h-1 w-5 rounded-full bg-primary" aria-hidden />
+                Gallery
+              </h2>
+              <div className="grid gap-4 sm:grid-cols-3">
+                {project.gallery.map((key) => (
+                  <img
+                    key={key}
+                    src={visualAssets[key].url}
+                    alt=""
+                    className="aspect-square w-full rounded-2xl object-cover"
+                  />
+                ))}
+              </div>
+            </section>
+          ) : null}
         </>
       ) : (
         <section className="container-page py-14">
