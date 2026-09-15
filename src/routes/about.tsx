@@ -78,15 +78,19 @@ function AboutPage() {
           {experience.map((e) => (
             <article key={e.company} className="rounded-2xl border border-border bg-card p-6">
               <div className="flex items-start justify-between gap-3">
-                <div>
-                  <h3 className="font-display text-lg font-bold">{e.company}</h3>
-                  <p className="text-sm font-semibold text-primary">{e.role}</p>
+                <div className="flex items-center gap-3">
+                  {e.logo ? (
+                    <img src={e.logo} alt={e.company} className="h-8 max-w-[100px] object-contain" />
+                  ) : (
+                    <h3 className="font-display text-lg font-bold">{e.company}</h3>
+                  )}
                 </div>
                 <span className="rounded-full bg-primary-soft px-2.5 py-0.5 text-[11px] font-bold text-primary">
                   {e.industry}
                 </span>
               </div>
-              <p className="mt-3 text-sm leading-relaxed text-muted">{e.body}</p>
+              <p className="mt-1 text-sm font-semibold text-primary">{e.role}</p>
+              <p className="mt-2 text-sm leading-relaxed text-muted">{e.body}</p>
             </article>
           ))}
         </div>

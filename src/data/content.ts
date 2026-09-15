@@ -6,7 +6,8 @@ export const site = {
   eyebrow: "AI · Automation · Real Results",
   intro:
     "I build AI powered websites, automation systems and smart bots that save time, increase productivity and help you grow.",
-  email: "hello@vedprakash.build",
+  email: "Vedv0987@gmail.com",
+  phone: "+91 7710039946",
   location: "Available worldwide",
   hoodieLine: ["Discipline", "Creates", "Freedom"],
 } as const;
@@ -420,10 +421,10 @@ export const projects = [
   },
   {
     slug: "alfamed",
-    title: "Alfamed Product Content",
+    title: "AlphaMed Product Content",
     blurb: "Healthcare product photography and content for a better tomorrow.",
     tags: ["Healthcare"],
-    client: "Alfamed",
+    client: "AlphaMed",
     image: undefined as string | undefined,
     problem: "",
     solution: "",
@@ -465,14 +466,22 @@ export const projects = [
   },
 ] as const;
 
-/** Generic, unbranded placeholders — swap in real client names/logos when supplied. */
-export const trustedBy = [
-  "Healthcare",
-  "Real Estate",
-  "EdTech",
-  "D2C / E-Commerce",
-  "Consulting",
-  "AI Products",
+/**
+ * Real client logos, supplied directly by the owner (public/images/clients/).
+ * 7 of 9 clients have a real logo file; OncoSphere and Realatte AI don't
+ * yet — `logo: undefined` renders a plain text chip for those, never a
+ * fabricated mark.
+ */
+export const clients = [
+  { name: "Reliance Foundation Hospital", logo: "/images/clients/reliance-foundation-hospital.png" },
+  { name: "Blu Diamond", logo: "/images/clients/blu-diamond.png" },
+  { name: "AlphaMed", logo: "/images/clients/alphamed.png" },
+  { name: "OncoSphere", logo: undefined as string | undefined },
+  { name: "MediSage", logo: "/images/clients/medisage.png" },
+  { name: "Nanavati Max", logo: "/images/clients/nanavati-max.jpg" },
+  { name: "S3K Impex", logo: "/images/clients/s3k-impex.jpeg" },
+  { name: "Realatte AI", logo: undefined as string | undefined },
+  { name: "ESMO Asia", logo: "/images/clients/esmo-asia.webp" },
 ] as const;
 
 export const industries = [
@@ -571,10 +580,10 @@ export const journey = [
  * these real employers, same problem found in Phase C.
  */
 export const experience = [
-  { company: "MediSage", industry: "Medical Education", role: "Creative Partner", body: "Educational videos, campaign creatives and digital content for healthcare professionals." },
-  { company: "Nanavati Max", industry: "Healthcare", role: "Creative Partner", body: "Multimedia content and campaign assets for hospital initiatives and patient awareness." },
-  { company: "S3K Impex", industry: "Jewelry", role: "Creative Partner", body: "Premium product visuals, videos and brand content for the jewelry industry." },
-  { company: "Realatte AI", industry: "AI Products", role: "Creative Partner", body: "Brand identity, product visuals and digital content for an AI-driven real estate platform." },
+  { company: "MediSage", industry: "Medical Education", role: "Creative Partner", body: "Educational videos, campaign creatives and digital content for healthcare professionals.", logo: "/images/clients/medisage.png" },
+  { company: "Nanavati Max", industry: "Healthcare", role: "Creative Partner", body: "Multimedia content and campaign assets for hospital initiatives and patient awareness.", logo: "/images/clients/nanavati-max.jpg" },
+  { company: "S3K Impex", industry: "Jewelry", role: "Creative Partner", body: "Premium product visuals, videos and brand content for the jewelry industry.", logo: "/images/clients/s3k-impex.jpeg" },
+  { company: "Realatte AI", industry: "AI Products", role: "Creative Partner", body: "Brand identity, product visuals and digital content for an AI-driven real estate platform.", logo: undefined as string | undefined },
 ] as const;
 
 export const about = {
@@ -596,7 +605,8 @@ export const socials = [
   { label: "LinkedIn", href: "https://www.linkedin.com/", icon: "linkedin" },
   { label: "Instagram", href: "https://www.instagram.com/", icon: "instagram" },
   { label: "GitHub", href: "https://github.com/", icon: "github" },
-  { label: "Email", href: "mailto:hello@vedprakash.build", icon: "mail" },
+  { label: "Email", href: "mailto:Vedv0987@gmail.com", icon: "mail" },
+  { label: "Call", href: "tel:+917710039946", icon: "phone" },
 ] as const;
 
 export const collaborationProcess = [
