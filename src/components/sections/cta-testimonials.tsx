@@ -4,6 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/icons";
 import { SectionHeading } from "@/components/section-heading";
 import { testimonials } from "@/data/content";
+import { visualAssets } from "@/data/visual-assets";
+
+const banner = visualAssets["home/cta-banner"];
 
 export function CtaTestimonials() {
   const [index, setIndex] = useState(0);
@@ -14,36 +17,23 @@ export function CtaTestimonials() {
 
   return (
     <section className="pb-16">
-      <div className="container-page grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
-        <div className="relative overflow-hidden rounded-3xl bg-ink text-ink-fg">
-          <div className="grid items-stretch md:grid-cols-[1.15fr_0.85fr]">
-            <div className="relative z-10 px-8 py-10 sm:px-10">
-              <h2 className="font-display max-w-sm text-3xl font-extrabold tracking-tight sm:text-4xl">
-                Let's Build Something Amazing Together
-              </h2>
-              <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/70">
-                Turn your ideas into powerful AI solutions. Fast. Reliable. Future ready.
-              </p>
-              <Button asChild size="lg" className="mt-8">
-                <Link to="/contact">
-                  Start a Project
-                  <Icon name="arrow" className="size-4" />
-                </Link>
-              </Button>
-            </div>
-            <div className="relative hidden min-h-[240px] md:block">
-              <img
-                src="/images/robot-wave.jpg"
-                alt=""
-                className="absolute inset-0 size-full object-cover object-[center_20%]"
-              />
-              <p className="absolute bottom-8 left-4 rotate-[-12deg] text-sm font-semibold text-white/90">
-                Good Ideas
-                <span className="block">Always Win</span>
-              </p>
-            </div>
-          </div>
-        </div>
+      <div className="container-page space-y-8">
+        {/*
+          Roadmap Phase B — full-width red-sun mountain CTA banner. This PNG
+          is a complete, finished banner (heading, copy and a "Let's Work
+          Together" button are already baked into the art) — no artwork-only
+          variant exists, so per roadmap §4 it's used as-is with no live text
+          overlay duplicating it. The whole image is one real link.
+        */}
+        <Link to="/contact" className="block overflow-hidden rounded-3xl transition-transform hover:-translate-y-0.5">
+          <img
+            src={banner.url}
+            width={banner.width}
+            height={banner.height}
+            alt="Let's Create Something Extraordinary — start a project"
+            className="w-full object-cover"
+          />
+        </Link>
 
         <div>
           <SectionHeading
@@ -55,15 +45,11 @@ export function CtaTestimonials() {
               </Button>
             }
           />
-          <div className="relative rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] sm:p-8">
+          <div className="relative mx-auto max-w-2xl rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] sm:p-8">
             <p className="text-[17px] leading-relaxed font-medium">&ldquo;{t.quote}&rdquo;</p>
             <div className="mt-6 flex items-center justify-between gap-4">
               <div className="flex items-center gap-3">
-                <img
-                  src={t.avatar}
-                  alt=""
-                  className="size-11 rounded-full object-cover"
-                />
+                <img src={t.avatar} alt="" className="size-11 rounded-full object-cover" />
                 <div>
                   <p className="text-sm font-bold">{t.name}</p>
                   <p className="text-xs text-muted">{t.role}</p>

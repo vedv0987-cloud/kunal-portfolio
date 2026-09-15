@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Icon, type IconName } from "@/components/icons";
 import { whatIBuild } from "@/data/content";
+import { visualAssets } from "@/data/visual-assets";
 
 export function WhatIBuild() {
   return (
@@ -22,10 +23,10 @@ export function WhatIBuild() {
                 key={item.title}
                 className="group relative overflow-hidden border-t border-white/10 px-5 py-6 transition-colors hover:bg-white/[0.04] sm:px-6"
               >
-                {"image" in item && item.image ? (
+                {"image" in item && item.image && visualAssets[item.image] ? (
                   <>
                     <img
-                      src={item.image}
+                      src={visualAssets[item.image].url}
                       alt=""
                       loading="lazy"
                       className="absolute inset-0 h-full w-full object-cover opacity-25 transition-opacity duration-300 group-hover:opacity-40"

@@ -1,8 +1,8 @@
 export const site = {
   name: "Vedprakash",
   tagline: "Creative AI Specialist",
-  headline: "Ideas to Intelligent",
-  headlineAccent: "Solutions",
+  headline: "Design. Automate.",
+  headlineAccent: "Scale.",
   eyebrow: "AI · Automation · Real Results",
   intro:
     "I build AI powered websites, automation systems and smart bots that save time, increase productivity and help you grow.",
@@ -66,16 +66,22 @@ export const highlightBar = [
   },
 ] as const;
 
-/** Home page "What I Build" dark strip — from imagination to intelligent systems. */
+/**
+ * Home page "What I Build" dark strip — from imagination to intelligent systems.
+ * `image` values are visual-assets registry keys (see src/data/visual-assets.ts),
+ * not raw paths. "Websites & UI/UX" deliberately uses the Services-page thumbnail
+ * instead of home/service-artwork/websites-uiux, which qa-redo.json flags as
+ * unintended medical/dashboard imagery — roadmap §4 "documented alternative".
+ */
 export const whatIBuild = [
-  { title: "AI Cinematic Video", subtitle: "Storytelling with AI", icon: "video", image: "/images/services/service-ai-cinematic-video/service-ai-cinematic-video.jpg" },
-  { title: "Generative Image Design", subtitle: "Visuals that inspire", icon: "image", image: "/images/services/service-generative-image-design/service-generative-image-design.jpg" },
-  { title: "Websites & UI/UX", subtitle: "Modern digital experiences", icon: "monitor", image: "/images/services/service-website-development/service-website-development.jpg" },
-  { title: "Claude AI Automation", subtitle: "Smarter workflows", icon: "spark", image: "/images/services/service-claude-ai/service-claude-ai.jpg" },
-  { title: "Custom AI Bots", subtitle: "AI that works for you", icon: "bot", image: "/images/services/service-bot-creation/service-bot-creation.jpg" },
-  { title: "Workflow Automation", subtitle: "Save time. Do more.", icon: "refresh", image: "/images/services/service-workflow-automation/service-workflow-automation.jpg" },
-  { title: "API Integrations", subtitle: "Connect. Create. Scale.", icon: "link", image: "/images/services/service-api-integrations/service-api-integrations.jpg" },
-  { title: "Creative Systems", subtitle: "Ideas into ecosystems", icon: "bulb" },
+  { title: "AI Cinematic Video", subtitle: "Storytelling with AI", icon: "video", image: "home/service-artwork/cinematic-video" },
+  { title: "Generative Image Design", subtitle: "Visuals that inspire", icon: "image", image: "home/service-artwork/generative-image-design" },
+  { title: "Websites & UI/UX", subtitle: "Modern digital experiences", icon: "monitor", image: "services/thumbnails/websites-uiux" },
+  { title: "Claude AI Automation", subtitle: "Smarter workflows", icon: "spark", image: "home/service-artwork/claude-ai" },
+  { title: "Custom AI Bots", subtitle: "AI that works for you", icon: "bot", image: "home/service-artwork/custom-ai-bots" },
+  { title: "Workflow Automation", subtitle: "Save time. Do more.", icon: "refresh", image: "home/service-artwork/workflow-automation" },
+  { title: "API Integrations", subtitle: "Connect. Create. Scale.", icon: "link", image: "home/service-artwork/api-integrations" },
+  { title: "Creative Systems", subtitle: "Ideas into ecosystems", icon: "bulb", image: "home/service-artwork/creative-systems" },
 ] as const;
 
 export const services = [
@@ -275,6 +281,16 @@ export const caseStudyProcess = [
   { n: "3", title: "Refine & Direct", body: "Iterate, enhance and guide visuals for brand alignment." },
   { n: "4", title: "Post-Production", body: "Color grading, sound, cinematic edits, final polish." },
   { n: "5", title: "Multi-Platform Delivery", body: "Format for web, social, ads, outdoor and presentations." },
+] as const;
+
+/** Home page "Featured" strip — six visual categories, not literal projects (roadmap Phase B). */
+export const homeCategories = [
+  { title: "Healthcare Campaigns", category: "Healthcare", asset: "home/thumb-healthcare" },
+  { title: "Luxury Real Estate", category: "Real Estate", asset: "home/thumb-real-estate" },
+  { title: "Claude AI Automation", category: "AI & Automation", asset: "home/thumb-claude" },
+  { title: "Custom AI Bots", category: "AI & Automation", asset: "home/thumb-ai-bot" },
+  { title: "Cinematic AI Video", category: "AI Video", asset: "home/thumb-cinematic" },
+  { title: "Web & UI/UX", category: "Websites", asset: "home/thumb-web-uiux" },
 ] as const;
 
 export const projects = [

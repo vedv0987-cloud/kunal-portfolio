@@ -2,6 +2,9 @@ import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { Icon, type IconName } from "@/components/icons";
 import { heroRail, heroStats, highlightBar, site } from "@/data/content";
+import { visualAssets } from "@/data/visual-assets";
+
+const montage = visualAssets["home/hero-montage"];
 
 export function Hero() {
   return (
@@ -56,35 +59,14 @@ export function Hero() {
                 <span aria-hidden>↓</span>
               </span>
             </p>
-            <div className="relative mx-auto aspect-[4/5] w-full max-w-[420px] sm:max-w-[460px] lg:max-w-[480px]">
+            <div className="relative mx-auto w-full max-w-[560px] overflow-hidden rounded-[1.4rem] border border-border bg-card shadow-[var(--shadow)]">
               <img
-                src="/images/hero-portrait.jpg"
-                alt="Vedprakash, AI builder"
-                className="absolute inset-0 size-full object-contain object-[center_12%]"
+                src={montage.url}
+                width={montage.width}
+                height={montage.height}
+                alt="Devices and product screens showcasing websites, automation dashboards and AI tools built by Vedprakash"
+                className="w-full object-contain"
               />
-
-              <div className="float-y absolute top-[6%] left-0 max-w-[42%] -rotate-6 rounded-xl bg-card px-3 py-2 text-[11px] font-bold shadow-[var(--shadow)] sm:text-xs">
-                Same Ideas
-                <span className="block text-primary">Bigger Impact</span>
-              </div>
-              <div className="absolute top-[14%] right-[2%] hidden rotate-6 rounded-xl bg-card/95 px-3 py-2 text-[11px] font-bold shadow-[var(--shadow)] sm:block">
-                Build
-                <span className="block text-primary">Automate Grow</span>
-              </div>
-              <div className="absolute bottom-[18%] left-0 rounded-2xl border border-border bg-card px-3.5 py-2.5 shadow-[var(--shadow)]">
-                <p className="flex items-center gap-2 text-xs font-bold">
-                  Automating
-                  <span className="rounded-md bg-primary px-1.5 py-0.5 text-[9px] font-extrabold text-primary-fg">
-                    AI
-                  </span>
-                </p>
-                <p className="text-xs font-bold">
-                  a Smarter <span className="text-primary">Tomorrow</span>
-                </p>
-              </div>
-              <div className="absolute right-0 bottom-[10%] rounded-full bg-ink px-3.5 py-2 text-[11px] font-semibold text-ink-fg shadow-lg">
-                You imagine. I build.
-              </div>
             </div>
 
             <aside className="hidden w-[158px] shrink-0 rounded-2xl border border-border bg-card p-2 shadow-[var(--shadow)] 2xl:block">

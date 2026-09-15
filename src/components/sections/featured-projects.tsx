@@ -2,57 +2,54 @@ import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/icons";
 import { SectionHeading } from "@/components/section-heading";
-import { projects } from "@/data/content";
+import { homeCategories } from "@/data/content";
+import { visualAssets } from "@/data/visual-assets";
 
+/** Home "Featured" strip — six visual categories with white card footers (roadmap Phase B). */
 export function FeaturedProjects() {
   return (
     <section className="py-6 sm:py-10">
       <div className="container-page">
         <SectionHeading
-          title="Featured Projects"
+          title="Featured Work"
           action={
             <Button asChild variant="outline" size="sm">
               <Link to="/projects">
-                View All Projects
+                View All Work
                 <Icon name="arrow" className="size-4" />
               </Link>
             </Button>
           }
         />
-        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-          {projects.map((p) => (
-            <Link
-              key={p.slug}
-              to="/projects/$slug"
-              params={{ slug: p.slug }}
-              className="group overflow-hidden rounded-2xl bg-ink text-ink-fg"
-            >
-              <div className="relative aspect-[16/11] overflow-hidden">
+        {/*
+          home/thumb-* assets are complete cards with the category label and
+          arrow already baked into the artwork (no artwork-only variant
+          exists for these, unlike work/artwork vs work/cards) — so the image
+          IS the card. A live caption on top would duplicate the baked text
+          (roadmap §4: never render a second heading over words already in
+          the PNG). aria-label supplies the accessible name the baked text
+          can't provide.
+        */}
+        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          {homeCategories.map((c) => {
+            const art = visualAssets[c.asset];
+            return (
+              <Link
+                key={c.title}
+                to="/projects"
+                aria-label={`${c.title} — ${c.category}`}
+                className="group overflow-hidden rounded-2xl shadow-[var(--shadow)] transition-transform duration-300 hover:-translate-y-1"
+              >
                 <img
-                  src={p.image}
+                  src={art.url}
+                  width={art.width}
+                  height={art.height}
                   alt=""
-                  className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                  className="aspect-[4/3] w-full object-cover"
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/25 to-transparent" />
-                <span className="absolute top-3 right-3 grid size-8 place-items-center rounded-lg bg-black/45 text-white backdrop-blur-sm">
-                  <Icon name="external" className="size-3.5" />
-                </span>
-                <div className="absolute inset-x-0 bottom-0 p-4">
-                  <h3 className="font-display text-base font-bold tracking-tight">{p.title}</h3>
-                  <div className="mt-2 flex flex-wrap gap-1.5">
-                    {p.tags.map((t) => (
-                      <span
-                        key={t}
-                        className="rounded-full border border-white/15 bg-black/40 px-2.5 py-0.5 text-[11px] font-semibold"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            );
+          })}
         </div>
       </div>
     </section>
