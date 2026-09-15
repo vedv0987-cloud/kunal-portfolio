@@ -13,7 +13,7 @@ function ToolsPage() {
       <PageHero
         kicker="Tools"
         title="The stack I actually ship with."
-        body="Frontier AI for thinking and creating, cinematic generators for visuals, and code + automation to turn it all into systems that run."
+        body="Frontier AI for thinking and creating, cinematic generators for visuals, and code + automation to turn it all into systems that run. Click any tool to visit its official site."
       />
 
       <section className="container-page space-y-12 py-12 sm:space-y-16 sm:py-16">
@@ -28,15 +28,25 @@ function ToolsPage() {
             </div>
             <ul className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
               {group.items.map((item) => (
-                <li
-                  key={item.name}
-                  className="group flex items-center gap-4 rounded-2xl border border-border bg-card p-4 transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-foreground/15 hover:shadow-[var(--shadow)]"
-                >
-                  <BrandLogo item={item} className="transition-transform duration-300 group-hover:scale-110" />
-                  <div className="min-w-0">
-                    <p className="font-display font-bold leading-tight">{item.name}</p>
-                    <p className="mt-0.5 text-sm leading-snug text-muted">{item.detail}</p>
-                  </div>
+                <li key={item.name}>
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-magnetic="0.06"
+                    className="group flex h-full items-center gap-4 rounded-2xl border border-border bg-card p-4 hover:-translate-y-1 hover:border-primary/25 hover:shadow-[var(--shadow)] focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+                  >
+                    <BrandLogo item={item} className="transition-transform duration-300 group-hover:scale-110" />
+                    <div className="min-w-0 flex-1">
+                      <p className="font-display font-bold leading-tight">{item.name}</p>
+                      <p className="mt-0.5 text-sm leading-snug text-muted">{item.detail}</p>
+                    </div>
+                    <Icon
+                      name="external"
+                      className="size-4 shrink-0 text-muted-2 transition-[color,translate] duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary"
+                    />
+                    <span className="sr-only">(opens official website in a new tab)</span>
+                  </a>
                 </li>
               ))}
             </ul>

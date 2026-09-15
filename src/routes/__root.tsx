@@ -2,9 +2,9 @@ import { createRootRoute, HeadContent, Link, Outlet, Scripts } from "@tanstack/r
 import { Toaster } from "sonner";
 import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
-import { ThemeProvider } from "@/components/theme-provider";
 import { SiteShell } from "@/components/layout/site-shell";
 import { BackToTop } from "@/components/back-to-top";
+import { MotionLayer } from "@/components/motion-layer";
 import appCss from "../styles.css?url";
 
 const APP_NAME = "VEDPRAKASH";
@@ -48,13 +48,12 @@ function RootDocument() {
       <body className="antialiased">
         <PreviewHostBridge />
         <AuthProvider>
-          <ThemeProvider>
-            <SiteShell>
-              <Outlet />
-            </SiteShell>
-            <BackToTop />
-            <Toaster richColors position="top-center" />
-          </ThemeProvider>
+          <SiteShell>
+            <Outlet />
+          </SiteShell>
+          <BackToTop />
+          <MotionLayer />
+          <Toaster richColors position="top-center" />
         </AuthProvider>
         <Scripts />
       </body>

@@ -18,6 +18,7 @@ export const nav = [
   { label: "Services", to: "/services" },
   { label: "About", to: "/about" },
   { label: "Tools", to: "/tools" },
+  { label: "Pricing", to: "/pricing" },
   { label: "Contact", to: "/contact" },
 ] as const;
 
@@ -511,7 +512,7 @@ export const testimonials = [
       "Vedprakash delivered an amazing AI automation system for my business. Super professional, fast and creative! Highly recommended!",
     name: "Rohit Sharma",
     role: "Business Owner",
-    avatar: "/images/avatar-rohit.jpg",
+    avatar: "/images/avatar-rohit.webp",
     rating: 5,
   },
   {
@@ -519,7 +520,7 @@ export const testimonials = [
       "The study bot feels like a private tutor. Our students actually use it every day — that never happened with the last tool we tried.",
     name: "Ananya Mehta",
     role: "Founder, Learnloop",
-    avatar: "/images/avatar-ananya.jpg",
+    avatar: "/images/avatar-ananya.webp",
     rating: 5,
   },
   {
@@ -527,7 +528,7 @@ export const testimonials = [
       "Clean build, honest timelines, and the bot started booking calls the same week it launched. Vedprakash just gets it.",
     name: "Kenji Sato",
     role: "Head of Growth",
-    avatar: "/images/avatar-kenji.jpg",
+    avatar: "/images/avatar-kenji.webp",
     rating: 5,
   },
   {
@@ -535,22 +536,24 @@ export const testimonials = [
       "He turned a messy stack of spreadsheets and Slack pings into one calm dashboard. Our ops team finally sleeps.",
     name: "Maya Brooks",
     role: "Operations Lead",
-    avatar: "/images/avatar-maya.jpg",
+    avatar: "/images/avatar-maya.webp",
     rating: 5,
   },
 ] as const;
 
 /**
- * Tools page. `logo` is a simple-icons slug (official brand SVG + brand color,
- * CC0) where one exists. simple-icons doesn't carry Adobe, OpenAI/ChatGPT,
- * Higgsfield or HeyGen marks (removed at those brands' request / never
- * added), so those render a plain monogram tile in the brand's color —
- * never a hand-drawn imitation of their logo. Drop official logo files into
- * ~/Desktop/Logo and they can replace the monograms.
+ * Tools page. Every tile opens the tool's official website (`url`) in a new tab.
+ * `logo` is a simple-icons slug (official brand SVG + brand color, CC0) where
+ * one exists. simple-icons doesn't carry Adobe, OpenAI/ChatGPT, Higgsfield,
+ * HeyGen, Midjourney, Runway, Kling, Luma, Canva or CapCut marks (removed at
+ * those brands' request / never added), so those render a plain monogram
+ * tile — never a hand-drawn imitation of their logo. Drop official logo files
+ * into ~/Desktop/Logo and they can replace the monograms.
  */
 export type ToolItem = {
   name: string;
   detail: string;
+  url: string;
   logo?: string;
   monogram?: string;
   color?: string;
@@ -561,39 +564,77 @@ export const tools: { group: string; blurb: string; items: ToolItem[] }[] = [
     group: "AI Assistants & Coding",
     blurb: "Reasoning, research and code — the brains behind every system.",
     items: [
-      { name: "Claude AI", detail: "Agents, research & writing systems", logo: "claude" },
-      { name: "ChatGPT", detail: "Ideation, copy and quick analysis", monogram: "GPT", color: "#0D0D0D" },
-      { name: "Codex", detail: "AI pair-programming for real builds", monogram: "Cx", color: "#0D0D0D" },
-      { name: "Google Gemini", detail: "Multimodal research & docs", logo: "googlegemini" },
+      { name: "Claude AI", detail: "Agents, research & writing systems", url: "https://claude.ai", logo: "claude" },
+      { name: "ChatGPT", detail: "Ideation, copy and quick analysis", url: "https://chatgpt.com", monogram: "GPT", color: "#0D0D0D" },
+      { name: "Codex", detail: "AI pair-programming for real builds", url: "https://openai.com/codex/", monogram: "Cx", color: "#0D0D0D" },
+      { name: "Google Gemini", detail: "Multimodal research & docs", url: "https://gemini.google.com", logo: "googlegemini" },
+      { name: "Perplexity", detail: "Cited web research in seconds", url: "https://www.perplexity.ai", logo: "perplexity" },
+      { name: "Cursor", detail: "AI-native code editor", url: "https://cursor.com", logo: "cursor" },
+      { name: "GitHub Copilot", detail: "Inline AI coding assistant", url: "https://github.com/features/copilot", logo: "githubcopilot" },
     ],
   },
   {
     group: "AI Image & Video",
     blurb: "Cinematic visuals, product shots and motion — generated and art-directed.",
     items: [
-      { name: "Higgsfield AI", detail: "Cinematic AI video & camera motion", monogram: "Hf", color: "#0D0D0D" },
-      { name: "Freepik", detail: "Formerly Magnific AI — upscaling & imagery", logo: "freepik" },
-      { name: "Google Flow", detail: "AI filmmaking with Veo", logo: "google" },
-      { name: "Adobe Firefly", detail: "Commercially safe generative design", monogram: "Ff", color: "#DA1F26" },
-      { name: "HeyGen", detail: "AI avatars & spokesperson video", monogram: "Hg", color: "#0D0D0D" },
+      { name: "Higgsfield AI", detail: "Cinematic AI video & camera motion", url: "https://higgsfield.ai", monogram: "Hf", color: "#0D0D0D" },
+      { name: "Freepik", detail: "Formerly Magnific AI — upscaling & imagery", url: "https://www.freepik.com", logo: "freepik" },
+      { name: "Google Flow", detail: "AI filmmaking with Veo", url: "https://labs.google/flow/about", logo: "google" },
+      { name: "Midjourney", detail: "Art-directed concept imagery", url: "https://www.midjourney.com", monogram: "Mj", color: "#0D0D0D" },
+      { name: "Runway", detail: "Gen-video, motion & VFX tools", url: "https://runwayml.com", monogram: "Rw", color: "#0D0D0D" },
+      { name: "Kling AI", detail: "Realistic text & image-to-video", url: "https://klingai.com", monogram: "Kl", color: "#0D0D0D" },
+      { name: "Luma Dream Machine", detail: "Fast cinematic video generation", url: "https://lumalabs.ai/dream-machine", monogram: "Lu", color: "#0D0D0D" },
+      { name: "Adobe Firefly", detail: "Commercially safe generative design", url: "https://firefly.adobe.com", monogram: "Ff", color: "#DA1F26" },
+      { name: "HeyGen", detail: "AI avatars & spokesperson video", url: "https://www.heygen.com", monogram: "Hg", color: "#0D0D0D" },
     ],
   },
   {
-    group: "Creative Suite",
+    group: "AI Voice & Music",
+    blurb: "Voice-overs, soundtracks and audio that finish the story.",
+    items: [
+      { name: "ElevenLabs", detail: "Natural AI voice-overs & dubbing", url: "https://elevenlabs.io", logo: "elevenlabs" },
+      { name: "Suno", detail: "Original AI music & jingles", url: "https://suno.com", logo: "suno" },
+    ],
+  },
+  {
+    group: "Design & Editing",
     blurb: "Finishing, editing and brand polish.",
     items: [
-      { name: "Adobe Creative Cloud", detail: "Photoshop, Premiere Pro, After Effects, Illustrator", monogram: "Cc", color: "#DA1F26" },
+      { name: "Adobe Creative Cloud", detail: "Photoshop, Premiere Pro, After Effects, Illustrator", url: "https://www.adobe.com/creativecloud.html", monogram: "Cc", color: "#DA1F26" },
+      { name: "Figma", detail: "UI/UX design & prototypes", url: "https://www.figma.com", logo: "figma" },
+      { name: "Canva", detail: "Quick brand-ready layouts", url: "https://www.canva.com", monogram: "Cv", color: "#00C4CC" },
+      { name: "CapCut", detail: "Short-form edits & captions", url: "https://www.capcut.com", monogram: "Cut", color: "#0D0D0D" },
+      { name: "DaVinci Resolve", detail: "Color grading & finishing", url: "https://www.blackmagicdesign.com/products/davinciresolve", logo: "davinciresolve" },
+      { name: "Blender", detail: "3D scenes & product renders", url: "https://www.blender.org", logo: "blender" },
     ],
   },
   {
-    group: "Code & Automation",
+    group: "Web & Code",
+    blurb: "Fast, modern websites and the code behind AI products.",
+    items: [
+      { name: "Python", detail: "Scripts, data & AI pipelines", url: "https://www.python.org", logo: "python" },
+      { name: "React", detail: "Fast, modern interfaces", url: "https://react.dev", logo: "react" },
+      { name: "Next.js", detail: "Production web apps & sites", url: "https://nextjs.org", logo: "nextdotjs" },
+      { name: "TypeScript", detail: "Reliable, typed codebases", url: "https://www.typescriptlang.org", logo: "typescript" },
+      { name: "Tailwind CSS", detail: "Pixel-perfect responsive UI", url: "https://tailwindcss.com", logo: "tailwindcss" },
+      { name: "Supabase", detail: "Databases, auth & storage", url: "https://supabase.com", logo: "supabase" },
+      { name: "Vercel", detail: "Global hosting & deploys", url: "https://vercel.com", logo: "vercel" },
+      { name: "GitHub", detail: "Code, versioning & CI", url: "https://github.com", logo: "github" },
+      { name: "Hugging Face", detail: "Open-source AI models", url: "https://huggingface.co", logo: "huggingface" },
+      { name: "LangChain", detail: "LLM apps & AI agents", url: "https://www.langchain.com", logo: "langchain" },
+      { name: "Webflow", detail: "No-code marketing sites", url: "https://webflow.com", logo: "webflow" },
+    ],
+  },
+  {
+    group: "Automation & Workflow",
     blurb: "The glue that turns tools into systems that run on their own.",
     items: [
-      { name: "Python", detail: "Scripts, data & AI pipelines", logo: "python" },
-      { name: "n8n", detail: "Self-hostable visual workflows", logo: "n8n" },
-      { name: "Make", detail: "Visual automations that don't break", logo: "make" },
-      { name: "Zapier", detail: "Fast connections for small teams", logo: "zapier" },
-      { name: "React", detail: "Fast, modern interfaces", logo: "react" },
+      { name: "n8n", detail: "Self-hostable visual workflows", url: "https://n8n.io", logo: "n8n" },
+      { name: "Make", detail: "Visual automations that don't break", url: "https://www.make.com", logo: "make" },
+      { name: "Zapier", detail: "Fast connections for small teams", url: "https://zapier.com", logo: "zapier" },
+      { name: "Airtable", detail: "Flexible databases for ops", url: "https://www.airtable.com", logo: "airtable" },
+      { name: "Notion", detail: "Docs, wikis & project hubs", url: "https://www.notion.com", logo: "notion" },
+      { name: "WhatsApp Business", detail: "Chatbots & customer messaging", url: "https://business.whatsapp.com", logo: "whatsapp" },
     ],
   },
 ];

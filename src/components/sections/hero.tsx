@@ -4,10 +4,47 @@ import { Icon, type IconName } from "@/components/icons";
 import { heroRail, heroStats, highlightBar, site } from "@/data/content";
 import { HeroMontage } from "@/components/sections/hero-montage";
 
+const BG_ROWS = [
+  { words: ["Design", "Automate", "Scale", "Cinematic AI"], className: "bg-marquee bg-type-outline" },
+  { words: ["Claude AI", "Websites", "AI Bots", "Workflows"], className: "bg-marquee bg-marquee--reverse bg-type-fill" },
+];
+
+/** Oversized, slow-drifting type behind the hero — two rows moving in opposite directions. */
+function HeroBackdropType() {
+  return (
+    <div
+      aria-hidden
+      className="pointer-events-none absolute inset-x-0 top-0 bottom-28 flex flex-col justify-center gap-1 overflow-hidden select-none sm:gap-3"
+      style={{ maskImage: "linear-gradient(90deg, transparent, black 12%, black 88%, transparent)" }}
+    >
+      {BG_ROWS.map((row) => (
+        <div key={row.words[0]} className="bg-wave">
+          <div className={row.className}>
+            {[0, 1].map((copy) => (
+              <span
+                key={copy}
+                className="font-display flex shrink-0 items-center text-[clamp(4.5rem,12vw,10rem)] leading-[1.05] font-extrabold tracking-tight whitespace-nowrap uppercase"
+              >
+                {row.words.map((w) => (
+                  <span key={w} className="flex items-center">
+                    <span className="px-[0.35em]">{w}</span>
+                    <span className="text-[0.35em]">✦</span>
+                  </span>
+                ))}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export function Hero() {
   return (
     <section className="relative overflow-hidden pt-4 pb-10 sm:pt-8 lg:pt-10">
-      <div className="container-page">
+      <HeroBackdropType />
+      <div className="container-page relative">
         <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-4">
           <div className="rise-in max-w-xl">
             <p className="mb-5 flex items-center gap-2 text-[11px] font-bold tracking-[0.22em] text-primary uppercase">

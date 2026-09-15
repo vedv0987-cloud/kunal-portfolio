@@ -175,6 +175,12 @@ export default defineConfig(({ command, isPreview }) => ({
             // manifest + head-tag middleware). Nitro v3 defaults serverDir to
             // false, so removing this silently unwires /?install=1 on deploys.
             serverDir: "./server",
+            // Let the CDN and browsers keep imagery for a week (served stale while refreshing after that).
+            routeRules: {
+              "/images/**": {
+                headers: { "cache-control": "public, max-age=604800, stale-while-revalidate=2592000" },
+              },
+            },
           }),
         ]
       : []),

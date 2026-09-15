@@ -3,13 +3,11 @@ import { useEffect, useState } from "react";
 import { Logo } from "@/components/logo";
 import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/icons";
-import { useTheme } from "@/components/theme-provider";
 import { nav } from "@/data/content";
 import { cn } from "@/lib/utils";
 
 export function SiteHeader() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const { theme, toggle } = useTheme();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -68,30 +66,6 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <button
-            type="button"
-            onClick={toggle}
-            className="grid size-10 place-items-center rounded-full border border-border bg-card text-foreground transition-colors hover:bg-surface"
-            aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-          >
-            <span className="relative size-4">
-              <Icon
-                name="sun"
-                className={cn(
-                  "absolute inset-0 size-4 transition-[opacity,transform,filter] duration-200",
-                  theme === "dark" ? "scale-100 opacity-100 blur-0" : "scale-[0.25] opacity-0 blur-[4px]",
-                )}
-              />
-              <Icon
-                name="moon"
-                className={cn(
-                  "absolute inset-0 size-4 transition-[opacity,transform,filter] duration-200",
-                  theme === "light" ? "scale-100 opacity-100 blur-0" : "scale-[0.25] opacity-0 blur-[4px]",
-                )}
-              />
-            </span>
-          </button>
-
           <Button asChild size="md" className="hidden sm:inline-flex">
             <Link to="/contact">
               Let's Talk

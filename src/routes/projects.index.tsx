@@ -1,10 +1,10 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { createFileRoute, Link, useNavigate, useSearch } from "@tanstack/react-router";
+import { useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { Icon, type IconName } from "@/components/icons";
 import { PageHero } from "@/components/page-hero";
 import { cn } from "@/lib/utils";
-import { projects } from "@/data/content";
+import { homeCategories, projects } from "@/data/content";
 import { visualAssets } from "@/data/visual-assets";
 import { derived } from "@/data/derived-assets";
 
@@ -21,11 +21,25 @@ const CATEGORY_ICON: Record<string, IconName> = {
 };
 
 function ProjectsPage() {
+  // Home's category cards can point at a category with no projects yet (AI
+  // Video), so those categories get a tab too instead of silently falling back to All.
   const tags = useMemo(
-    () => Array.from(new Set(projects.flatMap((p) => p.tags))).sort(),
+    () =>
+      Array.from(
+        new Set<string>([...projects.flatMap((p) => p.tags), ...homeCategories.map((c) => c.category)]),
+      ).sort(),
     [],
   );
-  const [filter, setFilter] = useState<string>("All");
+  const { category } = useSearch({ from: "/projects" });
+  const navigate = useNavigate();
+  const filter = category && tags.includes(category) ? category : "All";
+  const setFilter = (next: string) =>
+    navigate({
+      to: "/projects",
+      search: next === "All" ? {} : { category: next },
+      replace: true,
+      resetScroll: false,
+    });
   const filtered =
     filter === "All" ? projects : projects.filter((p) => p.tags.some((t) => t === filter));
   const featured = projects.find((p) => p.featured) ?? projects[0];
@@ -46,8 +60,9 @@ function ProjectsPage() {
               type="button"
               onClick={() => setFilter(t)}
               aria-pressed={filter === t}
+              data-magnetic=""
               className={cn(
-                "rounded-full border px-4 py-2 text-sm font-bold transition-colors",
+                "rounded-full border px-4 py-2 text-sm font-bold",
                 filter === t
                   ? "border-primary bg-primary text-primary-fg"
                   : "border-border bg-card text-foreground hover:border-foreground/30",

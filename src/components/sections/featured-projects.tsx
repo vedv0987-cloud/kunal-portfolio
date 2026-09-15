@@ -19,6 +19,7 @@ function CategoryCard({ c }: { c: Category }) {
   return (
     <Link
       to="/projects"
+      search={{ category: c.category }}
       aria-label={`${c.title} — ${c.category}`}
       className="group block overflow-hidden rounded-2xl shadow-[var(--shadow)] transition-transform duration-300 hover:-translate-y-1"
       style={{ aspectRatio: `${art.width} / ${art.height}` }}

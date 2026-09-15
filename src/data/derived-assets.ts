@@ -29,4 +29,16 @@ export const derived = {
   heroJewelry: d("hero-jewelry.webp", 900, 491),
   heroAiBot: d("hero-ai-bot.webp", 900, 654),
   heroAutomation: d("hero-automation.webp", 900, 659),
+  // pool-*: extra frames the hero cards swap to. Photo-only artwork (no baked
+  // client logos / third-party marks), inset past the baked rounded corners and
+  // center-cropped (≤5%) to the aspect ratio of the card they rotate into.
+  poolPromoCinematic: d("pool-promo-cinematic.webp", 900, 604),
+  poolPortrait: d("pool-portrait.webp", 900, 723),
+  poolHospital: d("pool-hospital.webp", 900, 488),
+  poolDna: d("pool-dna.webp", 900, 488),
+  poolWorkflow: d("pool-workflow.webp", 900, 659),
+  poolRing: d("pool-ring.webp", 900, 491),
+  poolVilla: d("pool-villa.webp", 900, 491),
+  poolCamera: d("pool-camera.webp", 900, 659),
+  poolRobot: d("pool-robot.webp", 900, 654),
 } as const;

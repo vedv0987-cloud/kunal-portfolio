@@ -21,25 +21,6 @@
   --shadow-card: 0 8px 24px -16px rgb(12 12 12 / 0.16);
 }
 
-.dark {
-  --background: #090909;
-  --foreground: #f4f4f4;
-  --muted: #a3a3a3;
-  --muted-2: #737373;
-  --primary: #ff2a3c;
-  --primary-hover: #ff4454;
-  --primary-soft: #2a0c10;
-  --primary-fg: #ffffff;
-  --ink: #0a0a0a;
-  --ink-fg: #f7f7f7;
-  --card: #121212;
-  --border: #262626;
-  --surface: #161616;
-  --ring: #ff2a3c;
-  --shadow: 0 12px 32px -16px rgb(0 0 0 / 0.55);
-  --shadow-card: 0 8px 24px -14px rgb(0 0 0 / 0.5);
-}
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -73,9 +54,10 @@
   }
 
   html {
+    /* Light-only site: keep native controls/scrollbars light even when the OS is in dark mode. */
+    color-scheme: light;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    scroll-behavior: smooth;
   }
 
   body {
@@ -262,19 +244,320 @@
   animation-play-state: paused;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
+/* ---------- Smooth scrolling (Lenis) ---------- */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+
+.lenis [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* ---------- Hero: swapping frames + drifting background type ---------- */
+.hero-frame {
+  transition:
+    opacity 0.9s ease,
+    transform 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-frame:not([data-active]) {
+  opacity: 0;
+  transform: scale(1.08);
+}
+
+@keyframes drift-x {
+  from {
+    transform: translate3d(0, 0, 0);
   }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.bg-marquee {
+  display: flex;
+  width: max-content;
+  animation: drift-x 90s linear infinite;
+  will-change: transform;
+}
+
+.bg-marquee--reverse {
+  animation-direction: reverse;
+  animation-duration: 110s;
+}
+
+.bg-wave {
+  animation: float-y 11s ease-in-out infinite;
+}
+
+.bg-wave:nth-child(2) {
+  animation-duration: 13s;
+  animation-delay: -4s;
+}
+
+.bg-type-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgb(12 12 12 / 0.075);
+}
+
+.bg-type-fill {
+  color: rgb(225 29 46 / 0.055);
+}
+
+/* ---------- Magnetic, fluid buttons (driven by components/motion-layer.tsx) ---------- */
+/* In the components layer so per-element utilities (absolute, transitions…) still win. */
+@layer components {
+  [data-magnetic] {
+    transform: translate3d(var(--mag-x, 0px), var(--mag-y, 0px), 0);
+    transition:
+      transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+      translate 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+      scale 0.15s ease-out,
+      background-color 0.2s ease,
+      color 0.2s ease,
+      border-color 0.2s ease,
+      box-shadow 0.3s ease,
+      opacity 0.2s ease;
+  }
+
+  .btn-fluid {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+  }
+
+  /* A soft blob that grows from wherever the cursor enters. */
+  .btn-fluid::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: var(--mag-px, 50%);
+    top: var(--mag-py, 50%);
+    width: 0;
+    aspect-ratio: 1;
+    border-radius: 9999px;
+    background: var(--fluid, rgb(0 0 0 / 0.12));
+    transform: translate(-50%, -50%);
+    transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+  }
+
+  .btn-fluid:hover::before {
+    width: 280%;
+  }
+}
+
+/* ---------- Pricing ---------- */
+@keyframes price-rise {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.price-reveal {
+  animation: price-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) var(--delay, 0ms) both;
+}
+
+.price-feature {
+  animation: rise-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) var(--delay, 0ms) both;
+}
+
+.price-card {
+  transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition:
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.5s ease;
+}
+
+.price-card:hover {
+  box-shadow: 0 30px 60px -30px rgb(10 10 10 / 0.35);
+}
+
+/* Cursor spotlight */
+.price-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(360px circle at var(--sx, 50%) var(--sy, 0%), rgb(225 29 46 / 0.12), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.price-card:hover::after {
+  opacity: 1;
+}
+
+@property --angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes spin-angle {
+  to {
+    --angle: 360deg;
+  }
+}
+
+/* Featured plan: dark card with a slowly orbiting red/orange border. */
+.price-card--featured {
+  border: 1.5px solid transparent;
+  background:
+    linear-gradient(var(--ink), var(--ink)) padding-box,
+    conic-gradient(from var(--angle), #e11d2e, #ff7a45 18%, #2a2a2a 38%, #2a2a2a 62%, #ff7a45 82%, #e11d2e) border-box;
+  animation: spin-angle 6s linear infinite;
+}
+
+@keyframes shimmer-x {
+  from {
+    background-position: 150% 0;
+  }
+  to {
+    background-position: -50% 0;
+  }
+}
+
+.shimmer {
+  background-image: linear-gradient(110deg, transparent 35%, rgb(255 255 255 / 0.55) 50%, transparent 65%);
+  background-size: 220% 100%;
+  background-repeat: no-repeat;
+  animation: shimmer-x 2.8s ease-in-out infinite;
+}
+
+@keyframes gradient-pan {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.text-gradient-anim {
+  background: linear-gradient(90deg, var(--primary), #ff7a45, var(--primary)) 0 center / 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-pan 5s linear infinite;
+}
+
+@keyframes aurora {
+  to {
+    transform: translate3d(0, 30px, 0) scale(1.08) rotate(3deg);
+  }
+}
+
+.pricing-aurora {
+  background:
+    radial-gradient(40% 60% at 30% 40%, rgb(225 29 46 / 0.14), transparent 70%),
+    radial-gradient(35% 55% at 70% 30%, rgb(255 122 69 / 0.12), transparent 70%);
+  filter: blur(24px);
+  animation: aurora 14s ease-in-out infinite alternate;
+}
+
+/* ---------- Dialog ---------- */
+@keyframes overlay-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes dialog-out {
+  to {
+    opacity: 0;
+    transform: translateY(8px) scale(0.97);
+  }
+}
+
+.dialog-overlay[data-state="open"] {
+  animation: overlay-in 0.3s ease both;
+}
+
+.dialog-overlay[data-state="closed"] {
+  animation: overlay-in 0.2s ease reverse both;
+}
+
+.dialog-panel[data-state="open"] {
+  animation: dialog-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.dialog-panel[data-state="closed"] {
+  animation: dialog-out 0.2s ease both;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.check-draw circle {
+  stroke-dasharray: 160;
+  stroke-dashoffset: 160;
+  animation: draw 0.7s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+.check-draw path {
+  stroke-dasharray: 40;
+  stroke-dashoffset: 40;
+  animation: draw 0.45s cubic-bezier(0.65, 0, 0.35, 1) 0.55s forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
   .rise-in,
   .float-y,
   .marquee-track,
   .hero-pop,
-  .hero-float {
+  .hero-float,
+  .bg-marquee,
+  .bg-wave,
+  .price-reveal,
+  .price-feature,
+  .price-card--featured,
+  .shimmer,
+  .text-gradient-anim,
+  .pricing-aurora {
     animation: none;
   }
+  .check-draw circle,
+  .check-draw path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
   .hero-slot,
-  .hero-card {
+  .hero-card,
+  .hero-frame,
+  .price-card {
     transition: none;
+  }
+  [data-magnetic] {
+    transform: none;
   }
 }

@@ -9,7 +9,6 @@ export type Inquiry = {
 };
 
 const KEY = "vedprakash-inquiries";
-const THEME_KEY = "vedprakash-theme";
 
 function canUseStorage() {
   return typeof window !== "undefined" && typeof window.localStorage !== "undefined";
@@ -51,18 +50,4 @@ export function downloadInquiries(list: Inquiry[]) {
   a.download = "vedprakash-inquiries.json";
   a.click();
   URL.revokeObjectURL(url);
-}
-
-export type Theme = "light" | "dark";
-
-export function loadTheme(): Theme {
-  if (!canUseStorage()) return "light";
-  const saved = window.localStorage.getItem(THEME_KEY);
-  if (saved === "dark" || saved === "light") return saved;
-  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-}
-
-export function persistTheme(theme: Theme) {
-  if (!canUseStorage()) return;
-  window.localStorage.setItem(THEME_KEY, theme);
 }

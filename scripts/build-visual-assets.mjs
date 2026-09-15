@@ -2,7 +2,7 @@
 // Roadmap §4 "Recommended registry" — regenerates src/data/visual-assets.ts
 // from public/images/HANDOFF-ASSET-INVENTORY.csv. Dev-time only; never run
 // against the filesystem inside a deployed request.
-import { readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 
 const CSV_PATH = "public/images/HANDOFF-ASSET-INVENTORY.csv";
 const OUT_PATH = "src/data/visual-assets.ts";
@@ -19,10 +19,17 @@ const rows = lines.map((line) => {
 const generated = rows.filter((r) => r.status === "generated");
 const skipped = rows.length - generated.length;
 
+// Prefer the web-sized WebP sibling written by scripts/optimize-images.py
+// (same aspect ratio, ~10x lighter); fall back to the PNG master.
+const webPath = (path) => {
+  const webp = path.replace(/\.png$/, ".webp");
+  return webp !== path && existsSync(`public/images/${webp}`) ? webp : path;
+};
+
 const entries = generated
   .map(
     (r) => `  "${r.assetId}": {
-    url: "/images/${r.path}",
+    url: "/images/${webPath(r.path)}",
     width: ${r.width},
     height: ${r.height},
     disposition: "${r.disposition}",

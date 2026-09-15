@@ -1,5 +1,4 @@
 import { Link } from "@tanstack/react-router";
-import { Heart } from "lucide-react";
 import { Logo } from "@/components/logo";
 import { Icon, type IconName } from "@/components/icons";
 import { nav, socials } from "@/data/content";
@@ -37,20 +36,14 @@ export function SiteFooter() {
                 target={s.href.startsWith("http") ? "_blank" : undefined}
                 rel={s.href.startsWith("http") ? "noreferrer" : undefined}
                 aria-label={s.label}
-                className="grid size-10 place-items-center rounded-full border border-border text-foreground transition-colors hover:border-primary hover:text-primary"
+                data-magnetic="0.4"
+                className="grid size-10 place-items-center rounded-full border border-border text-foreground hover:border-primary hover:text-primary"
               >
                 <Icon name={s.icon as IconName} className="size-4" />
               </a>
             ))}
           </div>
         </div>
-
-        <p className="text-sm text-muted">
-          Made with{" "}
-          <Heart className="mx-0.5 inline size-3.5 fill-primary text-primary" aria-hidden />{" "}
-          by Vedprakash
-          <span className="mt-0.5 block text-muted-2">Ideas to a Smarter Tomorrow</span>
-        </p>
       </div>
     </footer>
   );
