@@ -3,9 +3,22 @@ import { ContactForm } from "@/components/contact-form";
 import { Icon, type IconName } from "@/components/icons";
 import { PageHero } from "@/components/page-hero";
 import { SectionHeading } from "@/components/section-heading";
-import { collaborationProcess, site, socials, stats } from "@/data/content";
+import { site, socials, stats } from "@/data/content";
+import { visualAssets } from "@/data/visual-assets";
 
 export const Route = createFileRoute("/contact")({ component: ContactPage });
+
+const heroArt = visualAssets["contact/hero-workspace"];
+
+// Roadmap Phase G — contact/process/* are complete cards whose baked text
+// matches collaborationProcess word-for-word (real, already-approved
+// copy); used as-is instead of the live icon+text rendering.
+const PROCESS_ASSETS = [
+  "contact/process/discover",
+  "contact/process/plan",
+  "contact/process/create",
+  "contact/process/deliver",
+];
 
 function ContactPage() {
   return (
@@ -15,6 +28,16 @@ function ContactPage() {
         title="Tell me what you want to build."
         body="Share the idea. I'll come back with a clear next step — scope, timeline, and how we'd ship it."
       />
+      <section className="container-page pt-10">
+        <img
+          src={heroArt.url}
+          width={heroArt.width}
+          height={heroArt.height}
+          alt=""
+          className="mx-auto w-full max-w-4xl rounded-3xl"
+        />
+      </section>
+
       <section className="container-page py-14">
         <div className="mb-10 flex flex-wrap gap-3">
           {socials.map((s) => (
@@ -60,15 +83,9 @@ function ContactPage() {
       <section className="container-page py-14">
         <SectionHeading title="Our Collaboration Process" />
         <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {collaborationProcess.map((step) => (
-            <li key={step.n} className="rounded-2xl border border-border bg-card p-5">
-              <span className="grid size-11 place-items-center rounded-xl bg-primary-soft text-primary">
-                <Icon name={step.icon as IconName} className="size-5" />
-              </span>
-              <h3 className="mt-4 font-display text-base font-bold">
-                {step.n}. {step.title}
-              </h3>
-              <p className="mt-1 text-sm text-muted">{step.body}</p>
+          {PROCESS_ASSETS.map((key) => (
+            <li key={key} className="overflow-hidden rounded-2xl border border-border">
+              <img src={visualAssets[key].url} alt="" className="w-full" />
             </li>
           ))}
         </ol>
