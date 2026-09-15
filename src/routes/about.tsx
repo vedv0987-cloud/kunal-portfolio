@@ -6,8 +6,9 @@ import { SectionHeading } from "@/components/section-heading";
 import { TrustedBy } from "@/components/sections/trusted-by";
 import { about, coreExpertise, experience, industries, journey, stats, testimonials } from "@/data/content";
 import { visualAssets } from "@/data/visual-assets";
+import { derived } from "@/data/derived-assets";
 
-const ctaBanner = visualAssets["about/cta-banner"];
+const ctaBanner = derived.aboutCta;
 
 export const Route = createFileRoute("/about")({ component: AboutPage });
 
@@ -80,7 +81,9 @@ function AboutPage() {
               <div className="flex items-start justify-between gap-3">
                 <div className="flex items-center gap-3">
                   {e.logo ? (
-                    <img src={e.logo} alt={e.company} className="h-8 max-w-[100px] object-contain" />
+                    <span className="flex h-12 items-center rounded-xl border border-black/5 bg-white px-3">
+                      <img src={e.logo} alt={e.company} className="max-h-8 w-auto max-w-[130px] object-contain" />
+                    </span>
                   ) : (
                     <h3 className="font-display text-lg font-bold">{e.company}</h3>
                   )}
@@ -113,16 +116,21 @@ function AboutPage() {
         </div>
       </section>
 
-      {/* industries/cards/* are complete cards (photo + baked label + arrow), same pattern as Home's category thumbnails — used as-is. */}
+      {/*
+        industries/cards/* are complete cards (photo + baked icon + label),
+        natively 5:4. They were forced to 4:5 before, which cut the icons
+        and the ends of "Social Campaigns" / "Medical Education".
+      */}
       <section className="container-page pb-14">
         <SectionHeading title="Industries I Work With" />
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
           {industries.map((ind) => (
             <img
               key={ind.label}
               src={visualAssets[ind.asset].url}
               alt={ind.label}
-              className="aspect-[4/5] w-full rounded-2xl object-cover"
+              loading="lazy"
+              className="aspect-[5/4] w-full rounded-2xl object-cover shadow-[var(--shadow-card)] transition-transform duration-300 hover:-translate-y-1"
             />
           ))}
         </div>

@@ -476,14 +476,14 @@ export const clients = [
   { name: "Reliance Foundation Hospital", logo: "/images/clients/reliance-foundation-hospital.png" },
   { name: "Blu Diamond", logo: "/images/clients/blu-diamond.png" },
   { name: "AlphaMed", logo: "/images/clients/alphamed.png" },
-  { name: "OncoSphere", logo: undefined as string | undefined },
+  { name: "OncoSphere", logo: "/images/clients/oncosphere.png" as string | undefined },
   { name: "MediSage", logo: "/images/clients/medisage.png" },
-  { name: "Nanavati Max", logo: "/images/clients/nanavati-max.jpg" },
-  { name: "S3K Impex", logo: "/images/clients/s3k-impex.jpeg" },
-  { name: "Realatte AI", logo: undefined as string | undefined },
-  { name: "ESMO Asia", logo: "/images/clients/esmo-asia.webp" },
-  { name: "SevenHills Hospital", logo: "/images/clients/sevenhills-hospital.jpeg" },
-  { name: "AstraZeneca", logo: "/images/clients/astrazeneca.jpeg" },
+  { name: "Nanavati Max", logo: "/images/clients/nanavati-max.png" },
+  { name: "S3K Impex", logo: "/images/clients/s3k-impex.png" },
+  { name: "Realatte AI", logo: "/images/clients/realatte.png" as string | undefined },
+  { name: "ESMO Asia", logo: "/images/clients/esmo-asia.png" },
+  { name: "SevenHills Hospital", logo: "/images/clients/sevenhills-hospital.png" },
+  { name: "AstraZeneca", logo: "/images/clients/astrazeneca.png" },
 ] as const;
 
 export const industries = [
@@ -540,32 +540,63 @@ export const testimonials = [
   },
 ] as const;
 
-export const tools = [
+/**
+ * Tools page. `logo` is a simple-icons slug (official brand SVG + brand color,
+ * CC0) where one exists. simple-icons doesn't carry Adobe, OpenAI/ChatGPT,
+ * Higgsfield or HeyGen marks (removed at those brands' request / never
+ * added), so those render a plain monogram tile in the brand's color —
+ * never a hand-drawn imitation of their logo. Drop official logo files into
+ * ~/Desktop/Logo and they can replace the monograms.
+ */
+export type ToolItem = {
+  name: string;
+  detail: string;
+  logo?: string;
+  monogram?: string;
+  color?: string;
+};
+
+export const tools: { group: string; blurb: string; items: ToolItem[] }[] = [
   {
-    group: "AI",
+    group: "AI Assistants & Coding",
+    blurb: "Reasoning, research and code — the brains behind every system.",
     items: [
-      { name: "Claude AI", detail: "Agents, research, writing systems" },
-      { name: "Custom GPTs", detail: "Specialist bots on your data" },
-      { name: "Prompt systems", detail: "Reusable, tested instructions" },
+      { name: "Claude AI", detail: "Agents, research & writing systems", logo: "claude" },
+      { name: "ChatGPT", detail: "Ideation, copy and quick analysis", monogram: "GPT", color: "#0D0D0D" },
+      { name: "Codex", detail: "AI pair-programming for real builds", monogram: "Cx", color: "#0D0D0D" },
+      { name: "Google Gemini", detail: "Multimodal research & docs", logo: "googlegemini" },
     ],
   },
   {
-    group: "Automation",
+    group: "AI Image & Video",
+    blurb: "Cinematic visuals, product shots and motion — generated and art-directed.",
     items: [
-      { name: "Make & n8n", detail: "Visual workflows that don't break" },
-      { name: "Zapier", detail: "Fast connections for small teams" },
-      { name: "Webhooks", detail: "Event-driven glue between apps" },
+      { name: "Higgsfield AI", detail: "Cinematic AI video & camera motion", monogram: "Hf", color: "#0D0D0D" },
+      { name: "Freepik", detail: "Formerly Magnific AI — upscaling & imagery", logo: "freepik" },
+      { name: "Google Flow", detail: "AI filmmaking with Veo", logo: "google" },
+      { name: "Adobe Firefly", detail: "Commercially safe generative design", monogram: "Ff", color: "#DA1F26" },
+      { name: "HeyGen", detail: "AI avatars & spokesperson video", monogram: "Hg", color: "#0D0D0D" },
     ],
   },
   {
-    group: "Product",
+    group: "Creative Suite",
+    blurb: "Finishing, editing and brand polish.",
     items: [
-      { name: "React", detail: "Fast, modern interfaces" },
-      { name: "APIs", detail: "REST, GraphQL, private backends" },
-      { name: "Analytics", detail: "Know what actually converts" },
+      { name: "Adobe Creative Cloud", detail: "Photoshop, Premiere Pro, After Effects, Illustrator", monogram: "Cc", color: "#DA1F26" },
     ],
   },
-] as const;
+  {
+    group: "Code & Automation",
+    blurb: "The glue that turns tools into systems that run on their own.",
+    items: [
+      { name: "Python", detail: "Scripts, data & AI pipelines", logo: "python" },
+      { name: "n8n", detail: "Self-hostable visual workflows", logo: "n8n" },
+      { name: "Make", detail: "Visual automations that don't break", logo: "make" },
+      { name: "Zapier", detail: "Fast connections for small teams", logo: "zapier" },
+      { name: "React", detail: "Fast, modern interfaces", logo: "react" },
+    ],
+  },
+];
 
 export const journey = [
   { n: "01", title: "Design Foundations", body: "Built a strong foundation in design, visual communication and creative thinking." },
@@ -583,9 +614,9 @@ export const journey = [
  */
 export const experience = [
   { company: "MediSage", industry: "Medical Education", role: "Creative Partner", body: "Educational videos, campaign creatives and digital content for healthcare professionals.", logo: "/images/clients/medisage.png" },
-  { company: "Nanavati Max", industry: "Healthcare", role: "Creative Partner", body: "Multimedia content and campaign assets for hospital initiatives and patient awareness.", logo: "/images/clients/nanavati-max.jpg" },
-  { company: "S3K Impex", industry: "Jewelry", role: "Creative Partner", body: "Premium product visuals, videos and brand content for the jewelry industry.", logo: "/images/clients/s3k-impex.jpeg" },
-  { company: "Realatte AI", industry: "AI Products", role: "Creative Partner", body: "Brand identity, product visuals and digital content for an AI-driven real estate platform.", logo: undefined as string | undefined },
+  { company: "Nanavati Max", industry: "Healthcare", role: "Creative Partner", body: "Multimedia content and campaign assets for hospital initiatives and patient awareness.", logo: "/images/clients/nanavati-max.png" },
+  { company: "S3K Impex", industry: "Jewelry", role: "Creative Partner", body: "Premium product visuals, videos and brand content for the jewelry industry.", logo: "/images/clients/s3k-impex.png" },
+  { company: "Realatte AI", industry: "AI Products", role: "Creative Partner", body: "Brand identity, product visuals and digital content for an AI-driven real estate platform.", logo: "/images/clients/realatte.png" as string | undefined },
 ] as const;
 
 export const about = {

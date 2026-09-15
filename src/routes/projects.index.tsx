@@ -6,10 +6,11 @@ import { PageHero } from "@/components/page-hero";
 import { cn } from "@/lib/utils";
 import { projects } from "@/data/content";
 import { visualAssets } from "@/data/visual-assets";
+import { derived } from "@/data/derived-assets";
 
 export const Route = createFileRoute("/projects/")({ component: ProjectsPage });
 
-const ctaBanner = visualAssets["work/cta-banner"];
+const ctaBanner = derived.workCta;
 
 const CATEGORY_ICON: Record<string, IconName> = {
   Healthcare: "heart",

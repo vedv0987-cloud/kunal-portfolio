@@ -1,50 +1,55 @@
 import { clients } from "@/data/content";
 
-/** Real client logos where supplied (public/images/clients/); a plain text chip otherwise — never a fabricated mark. */
-function Logo({ c }: { c: (typeof clients)[number] }) {
-  return c.logo ? (
-    <img
-      src={c.logo}
-      alt={c.name}
-      className="h-8 max-w-[140px] object-contain opacity-80 grayscale transition-[opacity,filter] duration-200 hover:opacity-100 hover:grayscale-0"
-    />
-  ) : (
-    <span className="rounded-full border border-border bg-card px-4 py-2 text-sm font-bold text-muted-2">
-      {c.name}
-    </span>
+type Client = (typeof clients)[number];
+
+/**
+ * Real client logos (public/images/clients/, trimmed + normalized) in full
+ * color on uniform white tiles — many source files are JPEGs with white
+ * backgrounds, so a consistent tile makes them read as intentional in both
+ * themes. OncoSphere has no usable logo file yet and shows its name.
+ */
+function LogoTile({ c }: { c: Client }) {
+  return (
+    <div className="flex h-16 w-44 shrink-0 items-center justify-center rounded-2xl border border-black/5 bg-white px-5 shadow-[0_1px_2px_rgb(0_0_0/0.05)] transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_12px_28px_-16px_rgb(0_0_0/0.35)]">
+      {c.logo ? (
+        <img src={c.logo} alt={c.name} loading="lazy" className="max-h-9 w-auto max-w-full object-contain" />
+      ) : (
+        <span className="text-center font-display text-sm font-bold text-neutral-700">{c.name}</span>
+      )}
+    </div>
   );
 }
 
 export function TrustedBy() {
   return (
-    <section className="overflow-hidden py-8 sm:py-10">
+    <section className="overflow-hidden py-10 sm:py-12">
       <div className="container-page">
-        <p className="mb-5 text-center text-[11px] font-bold tracking-[0.22em] text-muted uppercase sm:text-left">
+        <p className="mb-6 text-center text-[11px] font-bold tracking-[0.22em] text-muted uppercase sm:text-left">
           Trusted by Leading Brands & Organizations
         </p>
       </div>
 
-      {/* prefers-reduced-motion: a plain wrapped list, no scroll animation. */}
-      <ul className="container-page hidden flex-wrap items-center justify-center gap-x-8 gap-y-4 motion-reduce:flex sm:justify-start">
+      {/* prefers-reduced-motion: a plain wrapped grid, no scroll animation. */}
+      <ul className="container-page hidden flex-wrap justify-center gap-3 motion-reduce:flex sm:justify-start">
         {clients.map((c) => (
-          <li key={c.name} className="flex h-8 items-center">
-            <Logo c={c} />
+          <li key={c.name}>
+            <LogoTile c={c} />
           </li>
         ))}
       </ul>
 
-      {/* Default: an infinite scrolling marquee, edge-faded, pauses on hover/focus. */}
+      {/* Default: infinite marquee, edge-faded, pauses on hover. */}
       <div
-        className="relative motion-reduce:hidden"
+        className="relative py-2 motion-reduce:hidden"
         style={{
-          maskImage: "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
-          WebkitMaskImage: "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
+          maskImage: "linear-gradient(to right, transparent, black 6%, black 94%, transparent)",
+          WebkitMaskImage: "linear-gradient(to right, transparent, black 6%, black 94%, transparent)",
         }}
       >
-        <ul className="marquee-track flex w-max items-center gap-12">
+        <ul className="marquee-track flex w-max items-center gap-4">
           {[...clients, ...clients].map((c, i) => (
-            <li key={`${c.name}-${i}`} className="flex h-8 items-center" aria-hidden={i >= clients.length}>
-              <Logo c={c} />
+            <li key={`${c.name}-${i}`} aria-hidden={i >= clients.length}>
+              <LogoTile c={c} />
             </li>
           ))}
         </ul>

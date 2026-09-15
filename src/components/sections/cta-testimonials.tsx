@@ -4,9 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/icons";
 import { SectionHeading } from "@/components/section-heading";
 import { testimonials } from "@/data/content";
-import { visualAssets } from "@/data/visual-assets";
+import { derived } from "@/data/derived-assets";
 
-const banner = visualAssets["home/cta-banner"];
+const banner = derived.homeCta;
 
 export function CtaTestimonials() {
   const [index, setIndex] = useState(0);

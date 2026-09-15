@@ -2,9 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { Icon, type IconName } from "@/components/icons";
 import { heroRail, heroStats, highlightBar, site } from "@/data/content";
-import { visualAssets } from "@/data/visual-assets";
-
-const montage = visualAssets["home/hero-montage"];
+import { HeroMontage } from "@/components/sections/hero-montage";
 
 export function Hero() {
   return (
@@ -59,15 +57,7 @@ export function Hero() {
                 <span aria-hidden>↓</span>
               </span>
             </p>
-            <div className="relative mx-auto w-full max-w-[560px] overflow-hidden rounded-[1.4rem] border border-border bg-card shadow-[var(--shadow)]">
-              <img
-                src={montage.url}
-                width={montage.width}
-                height={montage.height}
-                alt="Devices and product screens showcasing websites, automation dashboards and AI tools built by Vedprakash"
-                className="w-full object-contain"
-              />
-            </div>
+            <HeroMontage />
 
             <aside className="hidden w-[158px] shrink-0 rounded-2xl border border-border bg-card p-2 shadow-[var(--shadow)] 2xl:block">
               {heroRail.map((item) => (
