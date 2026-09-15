@@ -293,82 +293,161 @@ export const homeCategories = [
   { title: "Web & UI/UX", category: "Websites", asset: "home/thumb-web-uiux" },
 ] as const;
 
+/**
+ * Roadmap Phase C — real 9-project roster (Reliance Foundation Hospital,
+ * Blu Diamond, Claude AI, Custom AI Bots, OncoSphere, Realatte AI, Alfamed,
+ * Social Media Campaign, ESMO Asia), replacing the old 4 generic demo
+ * projects and their fabricated metrics.
+ *
+ * `image` is a visual-assets key and is deliberately OMITTED for 7 of the 9
+ * — every work/artwork/* and work/cards/* asset for a named real client
+ * (Reliance, Blu Diamond, Alfamed, OncoSphere, Realatte AI, ESMO Asia) has a
+ * fabricated logo/tagline baked into the pixels, and the Claude AI asset
+ * reproduces Anthropic's real Claude trademark in a fake product mockup —
+ * neither is safe to publish (owner-confirmed: skip them, text-only cards
+ * until real logos are supplied). Only Custom AI Bots and Social Media
+ * Campaign have clean, unbranded artwork.
+ *
+ * `stack`/`problem`/`solution`/`result`/`impact` stay empty for the 7
+ * without real project data — never fabricated (roadmap §7 content
+ * integrity). Blu Diamond is the one fully-populated case study, using only
+ * the roadmap's own supplied copy.
+ */
 export const projects = [
   {
-    slug: "ai-study-assistant",
-    title: "AI Study Assistant Bot",
-    blurb: "A 24/7 tutor that quizzes, explains, and tracks progress from your notes.",
-    image: "/images/project-study-bot.jpg",
-    tags: ["Claude AI", "Automation"],
-    year: "2026",
-    client: "EdTech studio",
-    problem:
-      "Students were drowning in notes and had no way to quiz themselves without waiting for a tutor.",
-    solution:
-      "A Claude-powered study bot that ingests PDFs, generates quizzes, explains answers in the student's voice, and logs weak topics.",
-    result: "Average study time dropped 40% for the pilot group, with higher quiz scores in two weeks.",
-    stack: ["Claude", "WhatsApp", "Notion", "Python"],
-    impact: [
-      { value: "40%", label: "Less study time" },
-      { value: "2 wks", label: "To higher quiz scores" },
-    ],
+    slug: "reliance-foundation-hospital",
+    title: "Reliance Foundation Hospital Campaign",
+    blurb: "A healthcare campaign built around real human impact and cinematic storytelling.",
+    tags: ["Healthcare"],
+    client: "Reliance Foundation Hospital",
+    image: undefined as string | undefined,
+    problem: "",
+    solution: "",
+    result: "",
+    stack: [] as string[],
+    impact: [] as { value: string; label: string }[],
     featured: false,
   },
   {
-    slug: "ecommerce-automation",
-    title: "E-Commerce Automation",
-    blurb: "Orders, inventory and customer replies running on autopilot.",
-    image: "/images/project-ecommerce.jpg",
-    tags: ["Website", "Automation"],
-    year: "2025",
-    client: "D2C brand",
+    slug: "blu-diamond",
+    title: "Blu Diamond Luxury Visual Campaign",
+    blurb:
+      "A premium visual campaign that redefines modern luxury living, crafted with AI-powered creativity and cinematic storytelling.",
+    tags: ["Real Estate"],
+    client: "Blu Diamond",
+    image: undefined as string | undefined,
     problem:
-      "The founder was manually updating stock, chasing abandoned carts, and answering the same five questions every day.",
+      "Position Blu Diamond as a premium, future-ready real estate brand in a highly competitive market. The challenge was to create a visual identity and campaign that not only showcased properties but also communicated a lifestyle of elegance, trust and a brighter tomorrow.",
     solution:
-      "A storefront plus a workflow layer that syncs inventory, nudges carts, and drafts customer replies for review.",
-    result: "12 hours/week returned to the founder. Cart recovery up 18%.",
-    stack: ["Shopify", "Make", "Claude", "Slack"],
-    impact: [
-      { value: "12 hrs/wk", label: "Time returned" },
-      { value: "+18%", label: "Cart recovery" },
+      "We combined AI-powered visual production, cinematic storytelling and strategic messaging to create a cohesive multi-platform campaign. Every frame was designed to evoke aspiration, emotion and possibility — from architectural beauty to the feeling of home.",
+    result: "",
+    stack: [
+      "Cinematic Brand Film (AI-Powered)",
+      "High-End Property Visuals & Lifestyle Photography",
+      "Social Media Ad Creatives",
+      "Website & Landing Page Assets",
+      "Outdoor & Print Campaign Designs",
+      "Campaign Strategy & Messaging",
     ],
+    impact: [] as { value: string; label: string }[],
     featured: true,
   },
   {
-    slug: "custom-business-bot",
-    title: "Custom Business Bot",
-    blurb: "Your 24/7 business partner — qualify leads, book calls, answer FAQs.",
-    image: "/images/project-business-bot.jpg",
-    tags: ["AI Bot", "Integration"],
-    year: "2026",
-    client: "Consulting firm",
-    problem:
-      "Inbound leads sat unanswered overnight. Qualified calls were being lost to competitors who replied first.",
-    solution:
-      "A branded bot on the site and WhatsApp that qualifies, books calendar slots, and hands warm leads to the team with a briefing.",
-    result: "Response time went from hours to under a minute. 2.4× more booked calls.",
-    stack: ["Claude", "Calendly", "HubSpot", "WhatsApp"],
-    impact: [
-      { value: "<1 min", label: "Response time" },
-      { value: "2.4×", label: "More booked calls" },
-    ],
+    slug: "claude-ai-automation",
+    title: "Claude AI Automation Dashboard",
+    blurb: "An automation dashboard turning ideas into intelligent systems — research, analyze, create, automate.",
+    tags: ["AI & Automation"],
+    client: "Internal",
+    image: undefined as string | undefined,
+    problem: "",
+    solution: "",
+    result: "",
+    stack: [] as string[],
+    impact: [] as { value: string; label: string }[],
     featured: false,
   },
   {
-    slug: "portfolio-website",
-    title: "Portfolio Website",
-    blurb: "A conversion-first personal brand site for an AI builder.",
-    image: "/images/project-portfolio.jpg",
-    tags: ["Web Design", "Development"],
-    year: "2026",
-    client: "Personal brand",
-    problem:
-      "The previous site looked generic and did not explain the offer, so inquiries were vague and low-intent.",
-    solution:
-      "A red-black-white brand system, tight copy, and a brief form that captures service, budget and context.",
-    result: "Inquiry quality jumped — most briefs now arrive ready to scope.",
-    stack: ["React", "Tailwind", "Analytics"],
-    impact: [{ value: "Ready to scope", label: "Most briefs now arrive" }],
+    slug: "custom-ai-bots",
+    title: "Custom AI Bots for Real Work",
+    blurb: "24/7 support, document analysis, workflow automation and custom intelligence in one assistant.",
+    tags: ["AI & Automation"],
+    client: "Internal",
+    image: "work/artwork/custom-ai-bots",
+    problem: "",
+    solution: "",
+    result: "",
+    stack: [] as string[],
+    impact: [] as { value: string; label: string }[],
+    featured: false,
+  },
+  {
+    slug: "oncosphere",
+    title: "OncoSphere Medical Education",
+    blurb: "Cancer-care education content designed to make complex medical topics approachable.",
+    tags: ["Healthcare"],
+    client: "OncoSphere",
+    image: undefined as string | undefined,
+    problem: "",
+    solution: "",
+    result: "",
+    stack: [] as string[],
+    impact: [] as { value: string; label: string }[],
+    featured: false,
+  },
+  {
+    slug: "realatte-ai",
+    title: "Realatte AI — Real Estate Smarter with AI",
+    blurb: "Search. Compare. Decide. — a real-estate platform website and UI system built for an AI-driven brand.",
+    tags: ["Real Estate", "Websites"],
+    client: "Realatte AI",
+    image: undefined as string | undefined,
+    problem: "",
+    solution: "",
+    result: "",
+    stack: [] as string[],
+    impact: [] as { value: string; label: string }[],
+    featured: false,
+  },
+  {
+    slug: "alfamed",
+    title: "Alfamed Product Content",
+    blurb: "Healthcare product photography and content for a better tomorrow.",
+    tags: ["Healthcare"],
+    client: "Alfamed",
+    image: undefined as string | undefined,
+    problem: "",
+    solution: "",
+    result: "",
+    stack: [] as string[],
+    impact: [] as { value: string; label: string }[],
+    featured: false,
+  },
+  {
+    slug: "social-media-campaign",
+    title: "Social Media Campaign — Good Ideas, Bigger Reach",
+    blurb: "A social-first creative campaign designed to convert across Instagram, LinkedIn, YouTube and TikTok.",
+    tags: ["Social"],
+    client: "Internal",
+    image: "work/artwork/social-media-campaign",
+    problem: "",
+    solution: "",
+    result: "",
+    stack: [] as string[],
+    impact: [] as { value: string; label: string }[],
+    featured: false,
+  },
+  {
+    slug: "esmo-asia",
+    title: "ESMO Asia Event & Booth Experience",
+    blurb: "Science today, brighter tomorrows — booth and event brand experience design.",
+    tags: ["Healthcare"],
+    client: "ESMO Asia",
+    image: undefined as string | undefined,
+    problem: "",
+    solution: "",
+    result: "",
+    stack: [] as string[],
+    impact: [] as { value: string; label: string }[],
     featured: false,
   },
 ] as const;
