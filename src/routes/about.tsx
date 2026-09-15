@@ -4,7 +4,10 @@ import { Icon, type IconName } from "@/components/icons";
 import { PageHero } from "@/components/page-hero";
 import { SectionHeading } from "@/components/section-heading";
 import { TrustedBy } from "@/components/sections/trusted-by";
-import { about, coreExpertise, industries, journey, stats, testimonials } from "@/data/content";
+import { about, coreExpertise, experience, industries, journey, stats, testimonials } from "@/data/content";
+import { visualAssets } from "@/data/visual-assets";
+
+const ctaBanner = visualAssets["about/cta-banner"];
 
 export const Route = createFileRoute("/about")({ component: AboutPage });
 
@@ -68,6 +71,27 @@ function AboutPage() {
         </ol>
       </section>
 
+      {/* Roadmap Phase E — professional experience, previously missing entirely. Text-only, no fabricated dates/metrics or office imagery (see data/content.ts). */}
+      <section className="container-page pb-14">
+        <SectionHeading title="Professional Experience" />
+        <div className="grid gap-4 sm:grid-cols-2">
+          {experience.map((e) => (
+            <article key={e.company} className="rounded-2xl border border-border bg-card p-6">
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <h3 className="font-display text-lg font-bold">{e.company}</h3>
+                  <p className="text-sm font-semibold text-primary">{e.role}</p>
+                </div>
+                <span className="rounded-full bg-primary-soft px-2.5 py-0.5 text-[11px] font-bold text-primary">
+                  {e.industry}
+                </span>
+              </div>
+              <p className="mt-3 text-sm leading-relaxed text-muted">{e.body}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section className="container-page pb-14">
         <SectionHeading title="Core Expertise" />
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-7">
@@ -85,19 +109,17 @@ function AboutPage() {
         </div>
       </section>
 
+      {/* industries/cards/* are complete cards (photo + baked label + arrow), same pattern as Home's category thumbnails — used as-is. */}
       <section className="container-page pb-14">
         <SectionHeading title="Industries I Work With" />
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
           {industries.map((ind) => (
-            <div
+            <img
               key={ind.label}
-              className="flex flex-col items-center gap-2.5 rounded-2xl border border-border bg-card px-3 py-6 text-center"
-            >
-              <span className="grid size-11 place-items-center rounded-xl bg-primary-soft text-primary">
-                <Icon name={ind.icon as IconName} className="size-5" />
-              </span>
-              <span className="text-xs leading-tight font-bold">{ind.label}</span>
-            </div>
+              src={visualAssets[ind.asset].url}
+              alt={ind.label}
+              className="aspect-[4/5] w-full rounded-2xl object-cover"
+            />
           ))}
         </div>
       </section>
@@ -139,6 +161,18 @@ function AboutPage() {
             </article>
           ))}
         </div>
+      </section>
+
+      <section className="container-page pb-16">
+        <a href="/contact" className="block overflow-hidden rounded-3xl">
+          <img
+            src={ctaBanner.url}
+            width={ctaBanner.width}
+            height={ctaBanner.height}
+            alt="Let's create something extraordinary — go to contact"
+            className="w-full object-cover"
+          />
+        </a>
       </section>
     </>
   );

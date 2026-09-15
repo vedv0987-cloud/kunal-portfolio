@@ -463,12 +463,12 @@ export const trustedBy = [
 ] as const;
 
 export const industries = [
-  { label: "Healthcare", icon: "heart" },
-  { label: "Real Estate", icon: "home" },
-  { label: "Jewelry & Retail", icon: "gem" },
-  { label: "AI Products", icon: "bot" },
-  { label: "Social Campaigns", icon: "share" },
-  { label: "Education", icon: "graduation" },
+  { label: "Healthcare", icon: "heart", asset: "about/industries/cards/healthcare" },
+  { label: "Real Estate", icon: "home", asset: "about/industries/cards/real-estate" },
+  { label: "Jewelry & Retail", icon: "gem", asset: "about/industries/cards/jewelry" },
+  { label: "AI Products", icon: "bot", asset: "about/industries/cards/ai-products" },
+  { label: "Social Campaigns", icon: "share", asset: "about/industries/cards/social-campaigns" },
+  { label: "Education", icon: "graduation", asset: "about/industries/cards/medical-education" },
 ] as const;
 
 export const coreExpertise = [
@@ -548,6 +548,20 @@ export const journey = [
   { n: "02", title: "Multimedia & Video", body: "Expanded into video editing, motion graphics and cinematic storytelling." },
   { n: "03", title: "AI Integration", body: "Explored and integrated AI tools into creative workflows to work smarter and faster." },
   { n: "04", title: "Creative AI Specialist", body: "Bringing together design, AI and automation to create impactful brand experiences." },
+] as const;
+
+/**
+ * Roadmap Phase E — the 4 professional-experience cards were missing
+ * entirely on this page. Text-only (no dates/metrics) — none confirmed yet
+ * (roadmap §7 content integrity). No office-signage imagery either: every
+ * about/experience/artwork|cards/* asset has a fabricated logo/signage for
+ * these real employers, same problem found in Phase C.
+ */
+export const experience = [
+  { company: "MediSage", industry: "Medical Education", role: "Creative Partner", body: "Educational videos, campaign creatives and digital content for healthcare professionals." },
+  { company: "Nanavati Max", industry: "Healthcare", role: "Creative Partner", body: "Multimedia content and campaign assets for hospital initiatives and patient awareness." },
+  { company: "S3K Impex", industry: "Jewelry", role: "Creative Partner", body: "Premium product visuals, videos and brand content for the jewelry industry." },
+  { company: "Realatte AI", industry: "AI Products", role: "Creative Partner", body: "Brand identity, product visuals and digital content for an AI-driven real estate platform." },
 ] as const;
 
 export const about = {
