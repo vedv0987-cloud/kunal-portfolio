@@ -482,6 +482,8 @@ export const clients = [
   { name: "S3K Impex", logo: "/images/clients/s3k-impex.jpeg" },
   { name: "Realatte AI", logo: undefined as string | undefined },
   { name: "ESMO Asia", logo: "/images/clients/esmo-asia.webp" },
+  { name: "SevenHills Hospital", logo: "/images/clients/sevenhills-hospital.jpeg" },
+  { name: "AstraZeneca", logo: "/images/clients/astrazeneca.jpeg" },
 ] as const;
 
 export const industries = [

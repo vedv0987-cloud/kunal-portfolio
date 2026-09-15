@@ -9,6 +9,8 @@ import { visualAssets } from "@/data/visual-assets";
 
 export const Route = createFileRoute("/projects/")({ component: ProjectsPage });
 
+const ctaBanner = visualAssets["work/cta-banner"];
+
 const CATEGORY_ICON: Record<string, IconName> = {
   Healthcare: "heart",
   "Real Estate": "monitor",
@@ -147,6 +149,18 @@ function ProjectsPage() {
           ) : null}
         </section>
       ) : null}
+
+      <section className="container-page pb-16">
+        <a href="/contact" className="block overflow-hidden rounded-3xl">
+          <img
+            src={ctaBanner.url}
+            width={ctaBanner.width}
+            height={ctaBanner.height}
+            alt="Let's create something extraordinary — go to contact"
+            className="w-full object-cover"
+          />
+        </a>
+      </section>
     </>
   );
 }
