@@ -25,7 +25,7 @@ export function CtaTestimonials() {
           variant exists, so per roadmap §4 it's used as-is with no live text
           overlay duplicating it. The whole image is one real link.
         */}
-        <Link to="/contact" className="block overflow-hidden rounded-3xl transition-transform hover:-translate-y-0.5">
+        <Link to="/pricing" data-reveal className="block overflow-hidden rounded-3xl transition-[translate] duration-300 hover:-translate-y-0.5">
           <img
             src={banner.url}
             width={banner.width}

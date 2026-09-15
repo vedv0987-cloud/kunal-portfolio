@@ -1,5 +1,7 @@
 # Image prompts — missing website images (Nano Banana Pro)
 
+**Current audit, 15 September:** Work prompts 1–7 fill the seven missing current project covers. Work prompt 8 is optional future content. Pricing 1–4 and the Tools banner are optional visual enhancements. See [the release and integration plan](RELEASE-2026-09-15.md) for the exact page mapping.
+
 Generated with the nano-banana-prompt-generator skill (NANO mode, all 8 core bibles, engine-validated).
 Paste each `full_prompt` into Freepik → AI Image Generator → Nano Banana Pro, set the aspect ratio and 2K in the UI,
 and save with the suggested filename into `public/images/new/`. Tell me when they're in and I'll wire them in.

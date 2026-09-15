@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { AnimatedStat } from "@/components/animated-stat";
 import { ContactForm } from "@/components/contact-form";
 import { Icon, type IconName } from "@/components/icons";
 import { PageHero } from "@/components/page-hero";
@@ -72,7 +73,9 @@ function ContactPage() {
           <div className="mt-8 grid grid-cols-3 gap-4 border-t border-white/10 pt-6">
             {stats.map((s) => (
               <div key={s.label}>
-                <p className="font-display text-2xl font-extrabold sm:text-3xl">{s.value}</p>
+                <p className="font-display text-2xl font-extrabold sm:text-3xl">
+                  <AnimatedStat value={s.value} />
+                </p>
                 <p className="mt-1 text-xs text-white/60">{s.label}</p>
               </div>
             ))}
@@ -82,7 +85,7 @@ function ContactPage() {
 
       <section className="container-page py-14">
         <SectionHeading title="Our Collaboration Process" />
-        <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <ol data-reveal data-reveal-group className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {PROCESS_ASSETS.map((key) => (
             <li key={key} className="overflow-hidden rounded-2xl border border-border">
               <img src={visualAssets[key].url} alt="" className="w-full" />

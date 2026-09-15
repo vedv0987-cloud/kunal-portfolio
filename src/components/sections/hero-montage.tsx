@@ -49,8 +49,9 @@ const CARDS: Card[] = [
   },
   {
     frames: [
-      { key: "heroAutomation", alt: "AI automation dashboard", label: { title: "Ideas into Intelligent Systems", tag: "AI Automation" } },
-      { key: "poolWorkflow", alt: "Connected workflow automation nodes", label: { title: "Save Time. Do More.", tag: "Workflow Automation" } },
+      // hero-automation.webp is not used: it has Anthropic's Claude logo baked into the artwork.
+      { key: "poolWorkflow", alt: "Connected workflow automation nodes", label: { title: "Ideas into Intelligent Systems", tag: "AI Automation" } },
+      { key: "poolBulb", alt: "Glowing red light bulb", label: { title: "Creative Systems That Scale", tag: "Creative Systems" } },
     ],
     pos: { left: "30%", top: "27%", width: "44%" }, rot: 0, depth: 0.35, z: 6, float: 9,
   },
@@ -60,29 +61,31 @@ const CARDS: Card[] = [
       { key: "poolRing", alt: "Gold diamond ring product shot", label: { title: "Crafted to Shine", tag: "Jewelry & Retail" } },
       { key: "poolVilla", alt: "Modern luxury villa at dusk", label: { title: "Luxury Living, Visualised", tag: "Real Estate" } },
     ],
-    pos: { right: "0%", top: "37%", width: "30%" }, rot: 5, depth: 1, z: 5, float: 6.8,
+    // Above the automation card so its left-aligned caption isn't covered.
+    pos: { right: "0%", top: "37%", width: "30%" }, rot: 5, depth: 1, z: 7, float: 6.8,
   },
   {
     frames: [
       { key: "heroWebsites", alt: "Website and UI/UX design", label: { title: "Premium Digital Experiences", tag: "Websites / UI/UX" } },
       { key: "poolCamera", alt: "Cinema camera in dramatic light", label: { title: "Storytelling with AI", tag: "AI Cinematic Video" } },
     ],
-    pos: { left: "8%", bottom: "2%", width: "42%" }, rot: -2, depth: 0.65, z: 7, float: 7.6,
+    pos: { left: "8%", bottom: "2%", width: "42%" }, rot: -2, depth: 0.65, z: 8, float: 7.6,
   },
   {
     frames: [
       { key: "heroAiBot", alt: "Custom AI assistant bot", label: { title: "Your AI Assistant, Always On", tag: "AI Bots" } },
       { key: "poolRobot", alt: "Friendly AI robot assistant", label: { title: "AI That Works for You", tag: "Custom AI Bots" } },
     ],
-    pos: { right: "4%", bottom: "4%", width: "30%" }, rot: 3, depth: 1.1, z: 8, float: 6.1,
+    pos: { right: "4%", bottom: "4%", width: "30%" }, rot: 3, depth: 1.1, z: 9, float: 6.1,
   },
 ];
 
 // Floating keyword chips — the "closest" layer, so they get the most parallax.
 const CHIPS: { label: string; icon: IconName; pos: CSSProperties; depth: number; float: number }[] = [
   { label: "Claude AI", icon: "spark", pos: { left: "38%", top: "-3%" }, depth: 1.6, float: 5.4 },
-  { label: "Automation", icon: "zap", pos: { left: "-4%", top: "36%" }, depth: 1.4, float: 6.2 },
-  { label: "4K AI Video", icon: "video", pos: { right: "-3%", top: "29%" }, depth: 1.7, float: 5.8 },
+  // Chips sit in the gaps between cards so they don't cover captions or baked titles.
+  { label: "Automation", icon: "zap", pos: { left: "-3%", top: "39.5%" }, depth: 1.4, float: 6.2 },
+  { label: "4K AI Video", icon: "video", pos: { right: "-3%", top: "33.5%" }, depth: 1.7, float: 5.8 },
   { label: "UI/UX", icon: "monitor", pos: { left: "46%", bottom: "-4%" }, depth: 1.5, float: 6.6 },
 ];
 

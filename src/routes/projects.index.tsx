@@ -12,6 +12,15 @@ export const Route = createFileRoute("/projects/")({ component: ProjectsPage });
 
 const ctaBanner = derived.workCta;
 
+const initials = (name: string) =>
+  name
+    .split(/\s+/)
+    .filter((w) => /^[A-Za-z]/.test(w))
+    .slice(0, 2)
+    .map((w) => w[0])
+    .join("")
+    .toUpperCase();
+
 const CATEGORY_ICON: Record<string, IconName> = {
   Healthcare: "heart",
   "Real Estate": "monitor",
@@ -74,15 +83,17 @@ function ProjectsPage() {
         </div>
 
         {filtered.length ? (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div key={filter} data-reveal data-reveal-group className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {filtered.map((p) => {
               const art = p.image ? visualAssets[p.image] : undefined;
+              const label = p.client === "Internal" ? p.tags[0] : p.client;
               return (
                 <Link
                   key={p.slug}
                   to="/projects/$slug"
                   params={{ slug: p.slug }}
-                  className="group overflow-hidden rounded-3xl border border-border bg-card"
+                  data-tilt="0.7"
+                  className="group overflow-hidden rounded-3xl border border-border bg-card [--tilt-glow:rgb(225_29_46/0.1)] hover:-translate-y-1 hover:border-primary/25 hover:shadow-[var(--shadow)]"
                 >
                   <div className="relative aspect-[16/10] overflow-hidden bg-ink">
                     {art ? (
@@ -92,8 +103,23 @@ function ProjectsPage() {
                         className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                       />
                     ) : (
-                      <div className="grid size-full place-items-center bg-gradient-to-br from-primary/20 via-ink to-ink">
-                        <Icon name={CATEGORY_ICON[p.tags[0]] ?? "cube"} className="size-10 text-white/20" />
+                      // Placeholder until the real project image is generated (see docs/image-prompts-*.md).
+                      <div className="relative grid size-full place-items-center overflow-hidden bg-ink">
+                        <div
+                          aria-hidden
+                          className="absolute inset-0 bg-[radial-gradient(70%_90%_at_15%_10%,rgb(225_29_46/0.38),transparent_60%),radial-gradient(60%_80%_at_95%_100%,rgb(255_122_69/0.2),transparent_65%)] transition-[scale] duration-700 group-hover:scale-110"
+                        />
+                        <div aria-hidden className="work-grid absolute inset-0 opacity-[0.07]" />
+                        <span
+                          aria-hidden
+                          className="font-display relative text-[4.5rem] leading-none font-extrabold tracking-tighter text-white/[0.12] transition-[scale,color] duration-700 group-hover:scale-110 group-hover:text-white/25"
+                        >
+                          {initials(label)}
+                        </span>
+                        <span className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-3 py-1.5 text-xs font-bold text-white/85">
+                          <Icon name={CATEGORY_ICON[p.tags[0]] ?? "cube"} className="size-3.5 text-primary" />
+                          {label}
+                        </span>
                       </div>
                     )}
                   </div>
@@ -167,12 +193,12 @@ function ProjectsPage() {
       ) : null}
 
       <section className="container-page pb-16">
-        <a href="/contact" className="block overflow-hidden rounded-3xl">
+        <a href="/pricing" className="block overflow-hidden rounded-3xl">
           <img
             src={ctaBanner.url}
             width={ctaBanner.width}
             height={ctaBanner.height}
-            alt="Let's create something extraordinary — go to contact"
+            alt="Let's create something extraordinary — see pricing"
             className="w-full object-cover"
           />
         </a>

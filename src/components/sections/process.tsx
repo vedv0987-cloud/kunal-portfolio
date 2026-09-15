@@ -12,14 +12,14 @@ export function Process() {
           title="My Process"
           action={
             <Button asChild variant="outline" size="sm">
-              <Link to="/contact">
+              <Link to="/pricing">
                 Let's Work Together
                 <Icon name="arrow" className="size-4" />
               </Link>
             </Button>
           }
         />
-        <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+        <ol data-reveal data-reveal-group className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
           {processSteps.map((step, i) => (
             <li key={step.title} className="relative text-center">
               {i < processSteps.length - 1 ? (

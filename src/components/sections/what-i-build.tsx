@@ -22,14 +22,15 @@ export function WhatIBuild() {
             <p className="text-sm text-white/60">From imagination to intelligent solutions</p>
           </div>
 
-          <ul className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4 xl:grid-cols-8">
+          <ul data-reveal data-reveal-group className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4 xl:grid-cols-8">
             {whatIBuild.map((item) => {
               const art = "image" in item && item.image ? visualAssets[item.image] : undefined;
               return (
                 <li key={item.title}>
                   <Link
                     to="/services"
-                    className="group flex h-full flex-col overflow-hidden rounded-xl border border-white/10 bg-white/[0.03] transition-[transform,border-color,background-color] duration-300 hover:-translate-y-1 hover:border-white/25 hover:bg-white/[0.06]"
+                    data-tilt
+                    className="group flex h-full flex-col overflow-hidden rounded-xl border border-white/10 bg-white/[0.03] hover:-translate-y-1 hover:border-white/25 hover:bg-white/[0.06]"
                   >
                     <div className="relative aspect-[5/4] overflow-hidden bg-black">
                       {art ? (

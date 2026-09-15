@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/icons";
+import { SplitWords } from "@/components/split-words";
 import { projects } from "@/data/content";
 import { visualAssets } from "@/data/visual-assets";
 
@@ -43,7 +44,7 @@ function ProjectDetail() {
             ← All projects
           </Link>
           <h1 className="font-display mt-4 max-w-3xl text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
-            {project.title}
+            <SplitWords text={project.title} baseDelay={60} />
           </h1>
           <p className="mt-3 max-w-2xl text-white/70">{project.blurb}</p>
           <div className="mt-5 flex flex-wrap gap-2">
@@ -165,7 +166,7 @@ function ProjectDetail() {
         <div className="rounded-3xl border border-border bg-card p-6 text-center">
           <p className="font-display text-lg font-bold">Want something like this?</p>
           <Button asChild className="mt-4">
-            <Link to="/contact">
+            <Link to="/pricing">
               Start something similar
               <Icon name="arrow" className="size-4" />
             </Link>

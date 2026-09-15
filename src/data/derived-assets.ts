@@ -41,4 +41,5 @@ export const derived = {
   poolVilla: d("pool-villa.webp", 900, 491),
   poolCamera: d("pool-camera.webp", 900, 659),
   poolRobot: d("pool-robot.webp", 900, 654),
+  poolBulb: d("pool-bulb.webp", 900, 659),
 } as const;

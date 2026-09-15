@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Logo } from "@/components/logo";
 import { Icon, type IconName } from "@/components/icons";
-import { nav, socials } from "@/data/content";
+import { nav, socials, site } from "@/data/content";
 
 export function SiteFooter() {
   return (
@@ -20,6 +20,12 @@ export function SiteFooter() {
                 {item.label}
               </Link>
             ))}
+            <Link
+              to="/pricing"
+              className="text-sm font-semibold text-muted transition-colors hover:text-foreground"
+            >
+              Contact
+            </Link>
             <Link
               to="/testimonials"
               className="text-sm font-semibold text-muted transition-colors hover:text-foreground"
@@ -43,6 +49,11 @@ export function SiteFooter() {
               </a>
             ))}
           </div>
+        </div>
+        <div className="flex flex-wrap gap-x-6 gap-y-2 border-t border-border pt-5 text-sm text-muted">
+          <a href={`mailto:${site.email}`} className="hover:text-primary">{site.email}</a>
+          <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="hover:text-primary">{site.phone}</a>
+          <span>{site.location}</span>
         </div>
       </div>
     </footer>

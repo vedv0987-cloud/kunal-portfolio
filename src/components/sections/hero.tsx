@@ -1,8 +1,12 @@
 import { Link } from "@tanstack/react-router";
+import type { CSSProperties } from "react";
+import { AnimatedStat } from "@/components/animated-stat";
 import { Button } from "@/components/ui/button";
 import { Icon, type IconName } from "@/components/icons";
-import { heroRail, heroStats, highlightBar, site } from "@/data/content";
+import { RotatingWords } from "@/components/rotating-words";
+import { heroHeadline, heroRail, heroStats, highlightBar, site } from "@/data/content";
 import { HeroMontage } from "@/components/sections/hero-montage";
+import { cn } from "@/lib/utils";
 
 const BG_ROWS = [
   { words: ["Design", "Automate", "Scale", "Cinematic AI"], className: "bg-marquee bg-type-outline" },
@@ -52,15 +56,19 @@ export function Hero() {
               {site.eyebrow}
             </p>
             <h1 className="font-display text-[2.55rem] font-extrabold tracking-tight sm:text-6xl lg:text-[4.15rem]">
-              {site.headline}
-              <span className="mt-1 block text-primary">{site.headlineAccent}</span>
+              <span className="sr-only">{heroHeadline.map((line) => line[0]).join(" ")}</span>
+              {heroHeadline.map((words, i) => (
+                <span key={words[0]} aria-hidden className={cn("block", i > 0 && "mt-1", i === 2 && "text-primary")}>
+                  <RotatingWords words={words} delay={i * 650} interval={3400} />
+                </span>
+              ))}
             </h1>
             <p className="mt-5 max-w-md text-base leading-relaxed text-muted sm:text-[17px]">
               {site.intro}
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <Button asChild size="lg">
-                <Link to="/contact">
+                <Link to="/pricing">
                   Start a Project
                   <Icon name="arrow" className="size-4" />
                 </Link>
@@ -79,7 +87,7 @@ export function Hero() {
                 <div key={s.label}>
                   <dt className="text-[11px] leading-snug text-muted sm:text-xs">{s.label}</dt>
                   <dd className="mt-1 font-display text-2xl font-extrabold tracking-tight sm:text-3xl">
-                    {s.value}
+                    <AnimatedStat value={s.value} />
                   </dd>
                 </div>
               ))}
@@ -112,16 +120,33 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="mt-8 overflow-hidden rounded-[1.6rem] bg-ink text-ink-fg">
-          <ul className="grid divide-y divide-white/10 sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-4">
-            {highlightBar.map((item) => (
-              <li key={item.title} className="flex items-center gap-3 px-6 py-5">
-                <span className="grid size-10 place-items-center rounded-xl bg-white/10 text-primary">
+        <div className="relative mt-8 overflow-hidden rounded-[1.6rem] bg-ink text-ink-fg">
+          <div aria-hidden className="highlight-sweep pointer-events-none absolute inset-y-0 -left-1/3 w-1/3" />
+          <ul className="relative grid divide-y divide-white/10 sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-4">
+            {highlightBar.map((item, i) => (
+              <li
+                key={item.title}
+                className="rise-in group flex items-center gap-3 px-6 py-5"
+                style={{ animationDelay: `${450 + i * 120}ms` }}
+              >
+                <span
+                  className="float-y grid size-10 shrink-0 place-items-center rounded-xl bg-white/10 text-primary transition-[background-color,color,scale] duration-300 group-hover:scale-110 group-hover:bg-primary group-hover:text-white"
+                  style={{ animationDelay: `${i * -1.1}s` }}
+                >
                   <Icon name={item.icon as IconName} className="size-5" />
                 </span>
-                <div>
-                  <p className="font-bold">{item.title}</p>
-                  <p className="text-sm text-white/65">{item.subtitle}</p>
+                <div className="min-w-0">
+                  <p className="font-bold transition-[translate] duration-300 group-hover:translate-x-1">{item.title}</p>
+                  <p className="text-sm">
+                    {item.subtitle.split(" ").map((word, j) => (
+                      <span key={`${word}-${j}`}>
+                        {j > 0 ? " " : null}
+                        <span className="glint-word" style={{ "--gd": `${i * 0.65 + j * 0.35}s` } as CSSProperties}>
+                          {word}
+                        </span>
+                      </span>
+                    ))}
+                  </p>
                 </div>
               </li>
             ))}

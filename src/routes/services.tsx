@@ -14,7 +14,8 @@ const GRID_THUMBNAILS: Record<string, string> = {
   "ai-cinematic-video": "services/thumbnails/cinematic-video",
   "generative-image-design": "services/thumbnails/generative-image-design",
   "bot-creation": "services/thumbnails/custom-ai-bots",
-  "claude-ai": "services/thumbnails/claude-ai-automation",
+  // claude-ai-automation thumbnail has Anthropic's Claude logo baked in — clean node-graph art instead.
+  "claude-ai": "home/service-artwork/workflow-automation",
   "workflow-automation": "services/thumbnails/workflow-automation",
   "api-integrations": "services/thumbnails/api-integrations",
   "3d-visualization": "services/thumbnails/3d-visualization",
@@ -54,14 +55,15 @@ function ServicesPage() {
         text and the edges of several photos).
       */}
       <section className="container-page py-12 sm:py-16">
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+        <div data-reveal data-reveal-group className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
           {gridServices.map((s) => {
             const art = visualAssets[GRID_THUMBNAILS[s.slug]];
             return (
               <a
                 key={s.slug}
                 href={`#${s.slug}`}
-                className="group relative block aspect-[4/3] overflow-hidden rounded-2xl bg-ink shadow-[var(--shadow-card)] transition-transform duration-300 hover:-translate-y-1"
+                data-tilt
+                className="group relative block aspect-[4/3] overflow-hidden rounded-2xl bg-ink shadow-[var(--shadow-card)] hover:-translate-y-1"
               >
                 <img
                   src={art.url}
@@ -80,10 +82,11 @@ function ServicesPage() {
             );
           })}
           <a
-            href="/contact"
-            className="block aspect-[4/3] overflow-hidden rounded-2xl shadow-[var(--shadow-card)] transition-transform duration-300 hover:-translate-y-1"
+            href="/pricing"
+            data-tilt
+            className="block aspect-[4/3] overflow-hidden rounded-2xl shadow-[var(--shadow-card)] hover:-translate-y-1"
           >
-            <img src={moreThumb.url} alt="More possibilities ahead — go to contact" loading="lazy" className="size-full object-cover" />
+            <img src={moreThumb.url} alt="More possibilities ahead — see pricing" loading="lazy" className="size-full object-cover" />
           </a>
         </div>
       </section>
@@ -119,7 +122,7 @@ function ServicesPage() {
               </ul>
             </div>
             <Button asChild size="lg" className="shrink-0 justify-self-start lg:justify-self-end">
-              <Link to="/contact">
+              <Link to="/pricing">
                 Automate Your Workflow
                 <Icon name="arrow" className="size-4" />
               </Link>
@@ -157,7 +160,7 @@ function ServicesPage() {
         boxes (grid rows stretched to the left column's height) — now a
         compact, top-aligned checklist.
       */}
-      <section className="container-page grid gap-5 pb-12 sm:pb-16 lg:grid-cols-2">
+      <section data-reveal data-reveal-group className="container-page grid gap-5 pb-12 sm:pb-16 lg:grid-cols-2">
         {services
           .filter((s) => !(s.slug in GRID_THUMBNAILS))
           .map((s) => (
@@ -178,7 +181,7 @@ function ServicesPage() {
                 ))}
               </ul>
               <Button asChild className="mt-6 self-start">
-                <Link to="/contact">
+                <Link to="/pricing">
                   Start this
                   <Icon name="arrow" className="size-4" />
                 </Link>
@@ -188,12 +191,12 @@ function ServicesPage() {
       </section>
 
       <section className="container-page pb-16">
-        <a href="/contact" className="block overflow-hidden rounded-3xl transition-transform duration-300 hover:-translate-y-0.5">
+        <a href="/pricing" className="block overflow-hidden rounded-3xl transition-transform duration-300 hover:-translate-y-0.5">
           <img
             src={ctaBanner.url}
             width={ctaBanner.width}
             height={ctaBanner.height}
-            alt="Let's build something extraordinary together — go to contact"
+            alt="Let's build something extraordinary together — see pricing"
             loading="lazy"
             className="h-auto w-full"
           />

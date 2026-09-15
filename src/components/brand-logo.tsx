@@ -67,23 +67,33 @@ const ICONS: Record<string, SimpleIcon> = {
 };
 
 /** Official brand mark (simple-icons, CC0) in its brand color, or a plain monogram when the brand isn't in simple-icons. */
-export function BrandLogo({ item, className }: { item: ToolItem; className?: string }) {
+export function BrandLogo({
+  item,
+  className,
+  size = "md",
+}: {
+  item: ToolItem;
+  className?: string;
+  size?: "md" | "lg";
+}) {
   const icon = item.logo ? ICONS[item.logo] : undefined;
+  const lg = size === "lg";
   return (
     <span
       className={cn(
-        "grid size-12 shrink-0 place-items-center rounded-xl border border-black/5 bg-white shadow-[0_1px_2px_rgb(0_0_0/0.06)]",
+        "grid shrink-0 place-items-center border border-black/5 bg-white shadow-[0_1px_2px_rgb(0_0_0/0.06)]",
+        lg ? "size-14 rounded-2xl" : "size-12 rounded-xl",
         className,
       )}
     >
       {icon ? (
-        <svg role="img" aria-label={icon.title} viewBox="0 0 24 24" className="size-6" fill={`#${icon.hex}`}>
+        <svg role="img" aria-label={icon.title} viewBox="0 0 24 24" className={lg ? "size-7" : "size-6"} fill={`#${icon.hex}`}>
           <path d={icon.path} />
         </svg>
       ) : (
         <span
           aria-hidden
-          className="font-display text-[13px] font-extrabold tracking-tight"
+          className={cn("font-display font-extrabold tracking-tight", lg ? "text-[15px]" : "text-[13px]")}
           style={{ color: item.color ?? "#0d0d0d" }}
         >
           {item.monogram}

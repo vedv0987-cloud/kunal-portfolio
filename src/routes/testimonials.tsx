@@ -13,7 +13,7 @@ function TestimonialsPage() {
         title="What clients say."
         body="Straight words from people who shipped with me."
       />
-      <section className="container-page grid gap-5 py-14 sm:grid-cols-2">
+      <section data-reveal data-reveal-group className="container-page grid gap-5 py-14 sm:grid-cols-2">
         {testimonials.map((t) => (
           <article key={t.name} className="rounded-3xl border border-border bg-card p-6 sm:p-8">
             <div className="flex gap-0.5 text-primary" aria-label={`${t.rating} out of 5`}>

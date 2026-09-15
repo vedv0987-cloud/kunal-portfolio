@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState, type CSSProperties, type PointerEvent } from "react";
 import { Icon, type IconName } from "@/components/icons";
 import { ProposalDialog } from "@/components/proposal-dialog";
+import { RotatingWords } from "@/components/rotating-words";
 import { Button } from "@/components/ui/button";
 import { finalPrice, formatINR, pricingPlans, type PricingPlan } from "@/data/pricing";
 import { cn } from "@/lib/utils";
@@ -18,6 +19,8 @@ export const Route = createFileRoute("/pricing")({
   }),
   component: PricingPage,
 });
+
+const PRICING_ACCENTS = ["Serious results.", "Real growth.", "Zero guesswork.", "Faster launches."];
 
 const INCLUDED: { icon: IconName; title: string; body: string }[] = [
   { icon: "spark", title: "AI-first production", body: "Frontier AI tools, art-directed by hand." },
@@ -51,7 +54,17 @@ function PricingPage() {
             className="rise-in font-display mx-auto mt-5 max-w-3xl text-[2.6rem] font-extrabold tracking-tight sm:text-6xl"
             style={{ animationDelay: "80ms" }}
           >
-            Simple packs. <span className="text-gradient-anim">Serious results.</span>
+            <span className="sr-only">Simple packs. Serious results.</span>
+            <span aria-hidden className="block">
+              Simple packs.
+            </span>
+            <RotatingWords
+              words={PRICING_ACCENTS}
+              interval={2800}
+              delay={600}
+              className="justify-items-center"
+              wordClassName="text-gradient-anim"
+            />
           </h1>
           <p
             className="rise-in mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted sm:text-lg"
@@ -131,7 +144,7 @@ function PlanCard({
 
   // Cursor spotlight + a gentle 3D tilt (mouse only).
   const onMove = (e: PointerEvent<HTMLElement>) => {
-    if (e.pointerType !== "mouse") return;
+    if (e.pointerType !== "mouse" || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const el = e.currentTarget;
     const r = el.getBoundingClientRect();
     const x = (e.clientX - r.left) / r.width;

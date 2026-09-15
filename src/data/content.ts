@@ -12,14 +12,21 @@ export const site = {
   hoodieLine: ["Discipline", "Creates", "Freedom"],
 } as const;
 
+/** Hero headline lines — each line flips through its words on its own beat. First word = the static/SEO line. */
+export const heroHeadline = [
+  ["Design.", "Create.", "Imagine."],
+  ["Automate.", "Accelerate.", "Streamline."],
+  ["Scale.", "Elevate.", "Lead."],
+] as const;
+
+/** Header tabs. Contact lives in the footer; every "start/let's talk" CTA goes to Pricing. */
 export const nav = [
   { label: "Home", to: "/" },
-  { label: "Work", to: "/projects" },
   { label: "Services", to: "/services" },
-  { label: "About", to: "/about" },
+  { label: "Work", to: "/projects" },
   { label: "Tools", to: "/tools" },
   { label: "Pricing", to: "/pricing" },
-  { label: "Contact", to: "/contact" },
+  { label: "About", to: "/about" },
 ] as const;
 
 export const stats = [
@@ -79,7 +86,8 @@ export const whatIBuild = [
   { title: "AI Cinematic Video", subtitle: "Storytelling with AI", icon: "video", image: "home/service-artwork/cinematic-video" },
   { title: "Generative Image Design", subtitle: "Visuals that inspire", icon: "image", image: "home/service-artwork/generative-image-design" },
   { title: "Websites & UI/UX", subtitle: "Modern digital experiences", icon: "monitor", image: "services/thumbnails/websites-uiux" },
-  { title: "Claude AI Automation", subtitle: "Smarter workflows", icon: "spark", image: "home/service-artwork/claude-ai" },
+  // services/thumbnails/workflow-automation instead of home/service-artwork/claude-ai, which has Anthropic's Claude logo baked in.
+  { title: "Claude AI Automation", subtitle: "Smarter workflows", icon: "spark", image: "services/thumbnails/workflow-automation" },
   { title: "Custom AI Bots", subtitle: "AI that works for you", icon: "bot", image: "home/service-artwork/custom-ai-bots" },
   { title: "Workflow Automation", subtitle: "Save time. Do more.", icon: "refresh", image: "home/service-artwork/workflow-automation" },
   { title: "API Integrations", subtitle: "Connect. Create. Scale.", icon: "link", image: "home/service-artwork/api-integrations" },
@@ -289,7 +297,8 @@ export const caseStudyProcess = [
 export const homeCategories = [
   { title: "Healthcare Campaigns", category: "Healthcare", asset: "home/thumb-healthcare" },
   { title: "Luxury Real Estate", category: "Real Estate", asset: "home/thumb-real-estate" },
-  { title: "Claude AI Automation", category: "AI & Automation", asset: "home/thumb-claude" },
+  // home/thumb-claude has Anthropic's Claude logo baked in — a clean photo with a live caption instead.
+  { title: "Claude AI Automation", category: "AI & Automation", asset: "services/thumbnails/workflow-automation", label: true },
   { title: "Custom AI Bots", category: "AI & Automation", asset: "home/thumb-ai-bot" },
   { title: "Cinematic AI Video", category: "AI Video", asset: "home/thumb-cinematic" },
   { title: "Web & UI/UX", category: "Websites", asset: "home/thumb-web-uiux" },

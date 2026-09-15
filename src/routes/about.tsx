@@ -4,6 +4,7 @@ import { Icon, type IconName } from "@/components/icons";
 import { PageHero } from "@/components/page-hero";
 import { SectionHeading } from "@/components/section-heading";
 import { TrustedBy } from "@/components/sections/trusted-by";
+import { AnimatedStat } from "@/components/animated-stat";
 import { about, coreExpertise, experience, industries, journey, stats, testimonials } from "@/data/content";
 import { visualAssets } from "@/data/visual-assets";
 import { derived } from "@/data/derived-assets";
@@ -40,7 +41,7 @@ function AboutPage() {
             ))}
           </div>
           <Button asChild size="lg" className="mt-8">
-            <Link to="/contact">
+            <Link to="/pricing">
               Work with me
               <Icon name="arrow" className="size-4" />
             </Link>
@@ -52,7 +53,9 @@ function AboutPage() {
         <div className="container-page grid grid-cols-3 gap-4 py-10">
           {stats.map((s) => (
             <div key={s.label} className="text-center">
-              <p className="font-display text-3xl font-extrabold sm:text-4xl">{s.value}</p>
+              <p className="font-display text-3xl font-extrabold sm:text-4xl">
+                <AnimatedStat value={s.value} />
+              </p>
               <p className="mt-1 text-xs text-muted sm:text-sm">{s.label}</p>
             </div>
           ))}
@@ -61,7 +64,7 @@ function AboutPage() {
 
       <section className="container-page py-14">
         <SectionHeading title="My Journey" />
-        <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <ol data-reveal data-reveal-group className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {journey.map((j) => (
             <li key={j.n} className="rounded-2xl border border-border bg-card p-5">
               <span className="font-display text-2xl font-extrabold text-primary">{j.n}</span>
@@ -75,7 +78,7 @@ function AboutPage() {
       {/* Roadmap Phase E — professional experience, previously missing entirely. Text-only, no fabricated dates/metrics or office imagery (see data/content.ts). */}
       <section className="container-page pb-14">
         <SectionHeading title="Professional Experience" />
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div data-reveal data-reveal-group className="grid gap-4 sm:grid-cols-2">
           {experience.map((e) => (
             <article key={e.company} className="rounded-2xl border border-border bg-card p-6">
               <div className="flex items-start justify-between gap-3">
@@ -101,7 +104,7 @@ function AboutPage() {
 
       <section className="container-page pb-14">
         <SectionHeading title="Core Expertise" />
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-7">
+        <div data-reveal data-reveal-group className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-7">
           {coreExpertise.map((c) => (
             <div
               key={c.title}
@@ -123,7 +126,7 @@ function AboutPage() {
       */}
       <section className="container-page pb-14">
         <SectionHeading title="Industries I Work With" />
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+        <div data-reveal data-reveal-group className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
           {industries.map((ind) => (
             <img
               key={ind.label}
@@ -138,7 +141,7 @@ function AboutPage() {
 
       <TrustedBy />
 
-      <section className="container-page grid gap-4 py-14 sm:grid-cols-3">
+      <section data-reveal data-reveal-group className="container-page grid gap-4 py-14 sm:grid-cols-3">
         {about.values.map((v) => (
           <article key={v.title} className="rounded-2xl border border-border bg-card p-6">
             <h3 className="font-display text-lg font-bold">{v.title}</h3>
@@ -159,7 +162,7 @@ function AboutPage() {
             </Button>
           }
         />
-        <div className="grid gap-5 sm:grid-cols-3">
+        <div data-reveal data-reveal-group className="grid gap-5 sm:grid-cols-3">
           {testimonials.slice(0, 3).map((t) => (
             <article key={t.name} className="rounded-3xl border border-border bg-card p-6">
               <p className="text-sm leading-relaxed font-medium">&ldquo;{t.quote}&rdquo;</p>
@@ -176,12 +179,12 @@ function AboutPage() {
       </section>
 
       <section className="container-page pb-16">
-        <a href="/contact" className="block overflow-hidden rounded-3xl">
+        <a href="/pricing" className="block overflow-hidden rounded-3xl">
           <img
             src={ctaBanner.url}
             width={ctaBanner.width}
             height={ctaBanner.height}
-            alt="Let's create something extraordinary — go to contact"
+            alt="Let's create something extraordinary — see pricing"
             className="w-full object-cover"
           />
         </a>

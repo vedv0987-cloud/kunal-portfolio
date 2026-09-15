@@ -34,7 +34,7 @@ export function SiteHeader() {
       className={cn(
         "sticky top-0 z-50 border-b transition-colors duration-200",
         scrolled
-          ? "border-border bg-background/90 backdrop-blur-md"
+          ? "border-border bg-background/95"
           : "border-transparent bg-background",
       )}
     >
@@ -67,7 +67,7 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-2">
           <Button asChild size="md" className="hidden sm:inline-flex">
-            <Link to="/contact">
+            <Link to="/pricing">
               Let's Talk
               <Icon name="arrow" className="size-4" />
             </Link>
@@ -98,7 +98,7 @@ export function SiteHeader() {
               </Link>
             ))}
             <Button asChild size="lg" className="mt-3 w-full">
-              <Link to="/contact">
+              <Link to="/pricing">
                 Let's Talk
                 <Icon name="arrow" className="size-4" />
               </Link>
